@@ -16,7 +16,7 @@ bold = code written and untested
     - [ ] hash set
     - [ ] submasks in 3^n
 - structures
-    - [ ] BIT
+    - [x] **BIT**
     - [ ] benq's K-D BIT???
     - [ ] treap
         - [ ] implicit
@@ -28,10 +28,10 @@ bold = code written and untested
     - [ ] segment tree 
         - [ ] seg tree beats
         - other wacky seg trees
-    - [ ] DSU
+    - [x] **DSU**
     - [ ] min queue
     - [ ] min stack
-    - [ ] RMQ (generic comparator)
+    - [x] **RMQ** (generic comparator)
     - [ ] wavelet tree
     - [ ] dominator tree (???)
 - strings
