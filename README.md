@@ -1,6 +1,9 @@
 the coolest, freshest, gaming-optimized hackpack
+
 check = code written
+
 bold = code written and untested
+
 
 ## contents/to-do
 - contest
