@@ -70,8 +70,9 @@ bold = code written and untested
     - [ ] prime sieve
         - [ ] linear sieve?
     - [ ] fractions
-        - [ ] fraction struct
-        - [ ] fraction compare
+        - [x] **fraction struct**
+        - [x] **fraction compare** (in fraction struct)
+            - should this be in it's own file too?
         - [ ] fraction binary search
     - [ ] euclidean algo (GCD)
         - [ ] non prime mod inverse
