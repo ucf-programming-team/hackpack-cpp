@@ -36,7 +36,7 @@ bold = code written and untested
     - [x] DSU
     - [ ] min queue
     - [ ] min stack
-    - [x] **RMQ** (generic comparator)
+    - [x] RMQ (generic comparator)
     - [ ] wavelet tree
     - [ ] dominator tree (???)
 - strings

@@ -1,3 +1,8 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+using ll = long long;
+
 template<typename T, class Compare = less<T>>
 struct RMQ {
 	vector<vector<T>> t;
@@ -13,3 +18,26 @@ struct RMQ {
 		return min(t[k][a], t[k][b - len + 1], cmp);
 	}
 };
+
+int main() {
+	cin.tie(0)->sync_with_stdio(0);
+	cin.exceptions(cin.failbit);
+
+	int n;
+	cin >> n;
+
+	vector<int> a(n);
+	for (int &x : a) cin >> x;
+
+	RMQ<int, less<int>> rmq(a);
+
+	int q;
+	cin >> q;
+	while (q--)
+	{
+		int x, y;
+		cin >> x >> y;
+		if (y < x) swap(x, y);
+		cout << rmq.query(x, y) << '\n';
+	}
+}

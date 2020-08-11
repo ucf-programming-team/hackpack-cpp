@@ -8,4 +8,4 @@ bold the entry if the code hasn't been tested on that yet (but will be in the fu
 - DSU
     - https://open.kattis.com/problems/unionfind
 - RMQ
-    - untested!!!
+    - https://www.spoj.com/problems/RMQSQ/
