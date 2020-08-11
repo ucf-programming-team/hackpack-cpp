@@ -6,6 +6,6 @@ bold the entry if the code hasn't been tested on that yet (but will be in the fu
     - https://open.kattis.com/problems/fenwick
     - https://codeforces.com/contest/1354/problem/D
 - DSU
-    - **https://open.kattis.com/problems/unionfind**
+    - https://open.kattis.com/problems/unionfind
 - RMQ
     - untested!!!

@@ -33,7 +33,7 @@ bold = code written and untested
     - [ ] segment tree 
         - [ ] seg tree beats
         - other wacky seg trees
-    - [x] **DSU**
+    - [x] DSU
     - [ ] min queue
     - [ ] min stack
     - [x] **RMQ** (generic comparator)
