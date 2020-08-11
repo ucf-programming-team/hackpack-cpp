@@ -3,6 +3,7 @@
 ## style
 use only the `#define`s and `typedef`s in the [template](https://github.com/ucf-programming-team/hackpack-cpp/blob/master/content/contest/template.cpp)
 
+only use tabs, so that the tab width can be set for the LaTeX document
 
 ## contents/to-do
 check = code written
@@ -20,7 +21,7 @@ bold = code written and untested
     - [ ] hash set
     - [ ] submasks in 3^n
 - structures
-    - [x] **BIT**
+    - [x] BIT
     - [ ] benq's K-D BIT???
     - [ ] treap
         - [ ] implicit
