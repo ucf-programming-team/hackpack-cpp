@@ -1,11 +1,14 @@
-the coolest, freshest, gaming-optimized hackpack
+# UCF PT C++ Hackpack
 
+## style
+use only the `#define`s and `typedef`s in the [template](https://github.com/ucf-programming-team/hackpack-cpp/blob/master/content/contest/template.cpp)
+
+
+## contents/to-do
 check = code written
 
 bold = code written and untested
 
-
-## contents/to-do
 - contest
     - [ ] template
         - [x] fast IO
