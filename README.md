@@ -7,8 +7,9 @@ bold = code written and untested
 
 ## contents/to-do
 - contest
-    - [ ] template?
-        - [ ] fast IO
+    - [ ] template
+        - [x] fast IO
+        - [ ] `#define`s and `typedef`s (now `using`)
     - [ ] .bashrc
     - [ ] stupid mistakes
 - misc
