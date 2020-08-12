@@ -19,7 +19,7 @@ bold = code written and untested
 - misc
     - [x] atharva's K-D vector thing
     - [ ] hash set
-    - [ ] submasks in 3^n
+    - [x] submasks in 3^n
 - structures
     - [x] BIT
     - [ ] benq's K-D BIT???
