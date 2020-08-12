@@ -74,8 +74,8 @@ bold = code written and untested
         - [ ] NTT with same code but also fast???
     - [ ] CRT
     - [ ] totient
-    - [ ] prime sieve
-        - [ ] linear sieve?
+    - [x] prime sieve
+        - [x] ~~linear sieve?~~ segmented sieve
     - [ ] fractions
         - [x] **fraction struct**
         - [x] **fraction compare** (in fraction struct)
