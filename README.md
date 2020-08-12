@@ -17,7 +17,7 @@ bold = code written and untested
     - [ ] .bashrc
     - [ ] stupid mistakes
 - misc
-    - [ ] atharva's K-D vector thing
+    - [x] atharva's K-D vector thing
     - [ ] hash set
     - [ ] submasks in 3^n
 - structures
@@ -97,4 +97,4 @@ bold = code written and untested
     - [ ] polygon
         - [ ] rotation/translation?
         - [ ] clipping?
-    - other geo shit
+    - other geo stuff
