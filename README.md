@@ -5,6 +5,8 @@ use only the `#define`s and `typedef`s in the [template](https://github.com/ucf-
 
 only use tabs, so that the tab width can be set for the LaTeX document
 
+name files in upper camel case
+
 ## contents/to-do
 check = code written
 
@@ -17,9 +19,9 @@ bold = code written and untested
     - [ ] .bashrc
     - [ ] stupid mistakes
 - misc
-    - [x] atharva's K-D vector thing
+    - [x] **atharva's K-D vector thing** (does this need to be tested?)
     - [ ] hash set
-    - [x] submasks in 3^n
+    - [x] **submasks in 3^n** (does this need to be tested?)
 - structures
     - [x] BIT
     - [ ] benq's K-D BIT???
