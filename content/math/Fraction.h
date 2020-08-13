@@ -1,5 +1,3 @@
-// note: gcd is defined bc `__gcd()` doesn't work for BigInt
-
 // regular fractions, constructor uses GCD
 // constant time operations with cross multiplication
 template<typename T>

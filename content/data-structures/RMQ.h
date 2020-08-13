@@ -1,3 +1,9 @@
+/**
+ * Description: Constant time subarray min/max queries for a fixed array
+ * Time: $O(n log n)$ initialization and $O(1)$ queries.
+ * Status: Tested
+ */
+
 template<typename T, class Compare = less<T>>
 struct RMQ {
 	vector<vector<T>> t;
