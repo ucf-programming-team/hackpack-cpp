@@ -1,3 +1,10 @@
+/**
+ * Description: Query [l, r] sums, and point updates.
+ * kth() returns the smallest index i s.t. query(0, i) >= k
+ * Time: $O(\log n)$ for all ops.
+ * Status: Tested
+ */
+
 template<typename T>
 struct BIT {
 	vector<T> s; int n;

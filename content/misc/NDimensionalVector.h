@@ -1,6 +1,9 @@
-// if you provide less than D args for dimension, it is assumed to be 0
-// Vec<2, int> a(10, 50); // int a[10][50] initialized with zero
-// Vec<3, double> b(n, m, k, 3.14); // double b[n][m][k] initialized with 3.14
+/** 
+ * if you provide less than D args for dimension, it is assumed to be 0
+ * examples:
+ * Vec<2, int> a(10, 50); // int a[10][50] initialized with zero
+ * Vec<3, double> b(n, m, k, 3.14); // double b[n][m][k] initialized with 3.14 
+ */
 
 template<int D, typename T>
 struct Vec : public vector<Vec<D - 1, T>> {

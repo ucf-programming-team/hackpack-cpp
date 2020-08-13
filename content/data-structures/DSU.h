@@ -1,3 +1,9 @@
+/**
+ * Description: Maintains union of disjoint sets
+ * Time: $O(\alpha(N))$
+ * Status: Tested
+ */
+
 struct DSU {
 	vector<int> s;
 	DSU(int n): s(n, -1) { }
