@@ -46,9 +46,9 @@ bold = code written and untested
     - [ ] treap
         - [ ] implicit
         - [ ] explicit
-    - [ ] splay tree
-        - [ ] implicit
-        - [ ] explicit
+    - [x] splay tree
+        - [x] implicit
+        - [ ] explicit (is this needed?)
     - [ ] link cut tree
     - [ ] segment tree 
         - [ ] seg tree beats
