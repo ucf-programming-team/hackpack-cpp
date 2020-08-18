@@ -13,13 +13,17 @@ template <class T, int N, int... Ns> struct BIT<T, N, Ns...> {
 	template<class... Args> void update(int i, Args... args) {
 		for (i++; i <= N; i += i & -i) bit[i].update(args...); 
 	}
-	template<class... Args> T query(int l, int r, Args... args) {
+	template<class... Args> T query(int i, Args... args) {
 		T ans = 0; 
-		for (r++; r; r -= r & -r) ans += bit[r].query(args...); 
-		for (; l; l -= l & -l) ans -= bit[l].query(args...); 
-		return ans; 
+		for (i++; i; i -= i & -i) ans += bit[i].query(args...);
+		return ans;
 	}
-}; 
+	template<class... Args, 
+		enable_if_t<(sizeof...(Args) == 2*sizeof...(Ns))>* = nullptr>
+	T query(int l, int r, Args... args) {
+		return query(r, args...) - query(l - 1, args...);
+	}
+};
 
 const int N = 1024;
 
