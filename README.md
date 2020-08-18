@@ -42,7 +42,7 @@ bold = code written and untested
     - [x] **submasks in 3^n** (does this need to be tested?)
 - structures
     - [x] BIT
-    - [ ] benq's K-D BIT???
+    - [x] benq's K-D BIT???
     - [ ] treap
         - [ ] implicit
         - [ ] explicit
