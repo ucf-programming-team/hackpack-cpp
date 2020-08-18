@@ -10,7 +10,7 @@ struct BIT {
 	vector<T> s; int n;
 	BIT(int n): s(n + 1), n(n) {}
 	void update(int i, T v) {
-		for (i++; i <= n ; i += i & -i) s[i] += v;
+		for (i++; i <= n; i += i & -i) s[i] += v;
 	}
 	T query(int i) {
 		T ans = 0;
