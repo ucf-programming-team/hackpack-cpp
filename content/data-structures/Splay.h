@@ -53,8 +53,6 @@ node *splay(node *x) {
 	return x;
 }
 
-// ***** STOP HERE FOR LCT *****
-
 // the returned node becomes the new root, update the root pointer!
 node *nodeAt(node *x, int pos) {
 	if (!x) return 0;
