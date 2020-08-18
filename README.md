@@ -39,6 +39,7 @@ bold = code written and untested
 - misc
     - [x] **atharva's K-D vector thing** (does this need to be tested?)
     - [ ] hash set
+        - [ ] other useful stuff from PBDS and how to use them
     - [x] **submasks in 3^n** (does this need to be tested?)
 - structures
     - [x] BIT
