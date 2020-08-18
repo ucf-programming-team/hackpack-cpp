@@ -69,7 +69,7 @@ bold = code written and untested
         - [ ] codeforces proof stuff
     - [ ] KMP
     - [ ] manacher's (gross)
-    - [ ] z values
+    - [x] z values
     - [ ] suffix array
 - graph
     - [ ] binary lifting
