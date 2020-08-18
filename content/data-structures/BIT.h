@@ -14,7 +14,7 @@ struct BIT {
 	}
 	T query(int i) {
 		T ans = 0;
-		for (i++; i > 0; i -= i & -i) ans += s[i];
+		for (i++; i; i -= i & -i) ans += s[i];
 		return ans;
 	}
 	T query(int l, int r) { return query(r) - query(l - 1); }
