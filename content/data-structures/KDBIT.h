@@ -12,6 +12,7 @@ template <class T, int... Ns> struct BIT {
 };
 template <class T, int N, int... Ns> struct BIT<T, N, Ns...> {
 	BIT<T, Ns...> bit[N+1];
+	// map<int, BIT<T, Ns...>> bit; // if the memory use is too high
 	template<class... Args> void update(int i, Args... args) {
 		for (i++; i <= N; i += i & -i) bit[i].update(args...); 
 	}
