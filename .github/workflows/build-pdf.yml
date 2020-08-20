@@ -2,28 +2,33 @@ name: Build PDF
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Install pdflatex
-      run: sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-extra
+      - name: Install pdflatex
+        run: sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-extra
 
-    - name: Build pdf
-      run: make kactl
+      - name: Install clang-format
+        run: sudo apt install clang-format
 
-    - uses: "marvinpinto/action-automatic-releases@latest"
-      with:
-        repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "latest"
-        prerelease: true
-        title: "Latest Build"
-        files: |
-          *.pdf 
+      - name: Run make format
+        run: make format
+
+      - name: Build pdf
+        run: make kactl
+
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Latest Build"
+          files: |
+            *.pdf
