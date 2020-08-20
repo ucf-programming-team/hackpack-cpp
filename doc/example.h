@@ -48,8 +48,10 @@ int exampleFunction3(int a, int b, int c) {
   return exampleFunction2() * a * b * c;
 }
 
-void ultraOneLiner() { cout << "this should not be on a single line\n"; }
+void ultraOneLiner() {
+  cout << "this should not be on a single line\n";
+}
 
-void badFormatting()              {
-   for (int i= 0; i <      1000; i ++  ){cout<<i<<          endl; }
-      }
+void badFormatting() {
+  for (int i = 0; i < 1000; i++) { cout << i << endl; }
+}
