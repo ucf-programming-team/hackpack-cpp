@@ -6,26 +6,20 @@ using ll = long long;
 template <class T, int... Ns>
 struct BIT {
 	T val = 0;
-	void update(T v) {
-		val += v;
-	}
-	T query() {
-		return val;
-	}
+	void update(T v) { val += v; }
+	T query() { return val; }
 };
 template <class T, int N, int... Ns>
 struct BIT<T, N, Ns...> {
 	BIT<T, Ns...> bit[N + 1];
 	template <class... Args>
 	void update(int i, Args... args) {
-		for (i++; i <= N; i += i & -i)
-			bit[i].update(args...);
+		for (i++; i <= N; i += i & -i) bit[i].update(args...);
 	}
 	template <class... Args>
 	T query(int i, Args... args) {
 		T ans = 0;
-		for (i++; i; i -= i & -i)
-			ans += bit[i].query(args...);
+		for (i++; i; i -= i & -i) ans += bit[i].query(args...);
 		return ans;
 	}
 	template <class... Args,
@@ -69,8 +63,7 @@ int main() {
 				cin >> x1 >> y1 >> x2 >> y2;
 				cout << bit.query(x1, x2, y1, y2) << '\n';
 			}
-			if (t == "END")
-				break;
+			if (t == "END") break;
 		}
 	}
 }

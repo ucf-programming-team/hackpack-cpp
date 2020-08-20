@@ -16,6 +16,4 @@
  * This also goes in the hackpack Status: Untested
  */
 
-void foo(int* ptr) {
-	cout << ptr << '\n';
-}
+void foo(int* ptr) { cout << ptr << '\n'; }

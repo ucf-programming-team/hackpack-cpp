@@ -13,8 +13,7 @@ vector<int> primeSieve() {
 	for (int i = 3; i <= S; i += 2)
 		if (!sieve[i]) {
 			cp.push_back({i, i * i / 2});
-			for (int j = i * i; j <= S; j += 2 * i)
-				sieve[j] = 1;
+			for (int j = i * i; j <= S; j += 2 * i) sieve[j] = 1;
 		}
 	for (int L = 1; L <= R; L += S) {
 		array<bool, S> block{};
@@ -22,11 +21,9 @@ vector<int> primeSieve() {
 			for (int i = idx; i < S + L; idx = (i += p))
 				block[i - L] = 1;
 		for (int i = 0; i < min(S, R - L); i++)
-			if (!block[i])
-				pr.push_back((L + i) * 2 + 1);
+			if (!block[i]) pr.push_back((L + i) * 2 + 1);
 	}
-	for (int i : pr)
-		isPrime[i] = 1;
+	for (int i : pr) isPrime[i] = 1;
 	return pr;
 }
 
@@ -40,8 +37,7 @@ int main() {
 	vector<int> allPrimes = primeSieve();
 	int cnt = 0;
 	for (int i : allPrimes)
-		if (i <= n)
-			cnt++;
+		if (i <= n) cnt++;
 
 	cout << cnt << '\n';
 

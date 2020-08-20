@@ -27,8 +27,7 @@ int main() {
 	cin >> n;
 
 	vector<int> a(n);
-	for (int& x : a)
-		cin >> x;
+	for (int& x : a) cin >> x;
 
 	RMQ<int, less<int>> rmq(a);
 
@@ -37,8 +36,7 @@ int main() {
 	while (q--) {
 		int x, y;
 		cin >> x >> y;
-		if (y < x)
-			swap(x, y);
+		if (y < x) swap(x, y);
 		cout << rmq.query(x, y) << '\n';
 	}
 }

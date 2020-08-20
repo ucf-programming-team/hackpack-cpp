@@ -42,9 +42,7 @@ int exampleFunction1(vi mice, int* cats, int catsCount) {
 	return sum;
 }
 
-int exampleFunction2() {
-	return rand();
-}
+int exampleFunction2() { return rand(); }
 
 int exampleFunction3(int a, int b, int c) {
 	return exampleFunction2() * a * b * c;
