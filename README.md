@@ -7,24 +7,6 @@ only use tabs, so that the tab width can be set for the LaTeX document
 
 name files in upper camel case
 
-## building/printing
-the `latest` release has the current contents of master
-
-if you want to build locally, you need
-- LaTeX
-- Python
-- make
-
-you can install the LaTeX packages needed with
-```bash
-apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-extra
-```
-
-afterwards, to compile the pdf, run
-```
-make kactl
-```
-
 ## contents/to-do
 check = code written
 
@@ -43,7 +25,7 @@ bold = code written and untested
     - [x] **submasks in 3^n** (does this need to be tested?)
 - structures
     - [x] BIT
-    - [ ] benq's K-D BIT???
+    - [x] benq's K-D BIT???
     - [ ] treap
         - [ ] implicit
         - [ ] explicit
@@ -93,8 +75,8 @@ bold = code written and untested
         - [ ] NTT with same code but also fast???
     - [ ] CRT
     - [ ] totient
-    - [ ] prime sieve
-        - [ ] linear sieve?
+    - [x] prime sieve
+        - [x] ~~linear sieve?~~ segmented sieve
     - [ ] fractions
         - [x] **fraction struct**
         - [x] **fraction compare** (in fraction struct)
