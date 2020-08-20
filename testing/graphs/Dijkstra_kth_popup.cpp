@@ -21,13 +21,6 @@ template<class T> pair<vector<bool>, vector<T>>
 	return {reached, dist};
 }
 
-struct Long {
-	ll x;
-	Long(ll x = 0): x(x) { }
-	Long operator+(const Long &o) const { return {x + o.x}; }
-	bool operator<(const Long &o) const { return x < o.x; }
-};
-
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
 	cin.exceptions(cin.failbit);
@@ -38,13 +31,13 @@ int main() {
 
 		if ((n | m | q | s) == 0) break;
 
-		vector<vector<pair<int, Long>>> adj(n);
+		vector<vector<pair<int, ll>>> adj(n);
 
 		for (int i = 0; i < m; i++) {
 			int u, v, w;
 			cin >> u >> v >> w;
 
-			adj[u].emplace_back(v, Long(w));
+			adj[u].emplace_back(v, w);
 		}
 
 		auto [reached, dist] = dijkstra(adj, s);
@@ -53,7 +46,7 @@ int main() {
 			int u;
 			cin >> u;
 
-			if (reached[u]) cout << dist[u].x << '\n';
+			if (reached[u]) cout << dist[u] << '\n';
 			else cout << "Impossible\n";
 		}
 
