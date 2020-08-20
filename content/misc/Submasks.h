@@ -3,5 +3,5 @@
  */
 
 for (int mask = 0; mask < (1 << n); mask++)
-	for (int sub = mask; sub; sub = (sub - 1) & mask)
+  for (int sub = mask; sub; sub = (sub - 1) & mask)
 // do thing

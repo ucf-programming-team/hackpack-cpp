@@ -40,7 +40,7 @@ ColumnLimit:     63
 CommentPragmas:  '^ IWYU pragma:'
 ConstructorInitializerAllOnOneLineOrOnePerLine: true
 ConstructorInitializerIndentWidth: 2
-ContinuationIndentWidth: 2
+ContinuationIndentWidth: 1
 Cpp11BracedListStyle: true
 DerivePointerAlignment: false
 DisableFormat:   false
@@ -82,6 +82,6 @@ SpacesInParentheses: false
 SpacesInSquareBrackets: false
 Standard:        Auto
 TabWidth:        2
-UseTab:          ForContinuationAndIndentation
+UseTab:          Never
 ...
 
