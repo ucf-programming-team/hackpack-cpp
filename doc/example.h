@@ -3,18 +3,18 @@
  * Date: 2009-03-13
  * License: CC0
  * Source: Conversation with Håkan and Ulf.
- * Description: Example structures and functions that doesn't really do
- *  anything. Latex commands are supported here, though! Like this: $2^2=3$
- * Time: O(M * N^4) where M = cats, N = mice
- * Memory: O(2^N) where N = cats
- * Status: Unknown
+ * Description: Example structures and functions that doesn't
+ * really do anything. Latex commands are supported here,
+ * though! Like this: $2^2=3$ Time: O(M * N^4) where M = cats,
+ * N = mice Memory: O(2^N) where N = cats Status: Unknown
  * Usage:
  *  int res = exampleFunction1(mice, cats, catsCount);
  *  int random = exampleFunction2();
  */
 #pragma once
 
-/// Headers and macros from contest/template.h are automatically included.
+/// Headers and macros from contest/template.h are
+/// automatically included.
 
 #include "Example.h" /// Header name will be kept in final list.
 

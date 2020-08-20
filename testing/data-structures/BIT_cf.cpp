@@ -3,21 +3,28 @@ using namespace std;
 
 using ll = long long;
 
-template<typename T>
+template <typename T>
 struct BIT {
-	vector<T> s; int n;
-	BIT(int n): s(n + 1), n(n) {}
+	vector<T> s;
+	int n;
+	BIT(int n) : s(n + 1), n(n) {
+	}
 	void update(int i, T v) {
-		for (i++; i <= n ; i += i & -i) s[i] += v;
+		for (i++; i <= n; i += i & -i)
+			s[i] += v;
 	}
 	T query(int i) {
 		T ans = 0;
-		for (i++; i > 0; i -= i & -i) ans += s[i];
+		for (i++; i > 0; i -= i & -i)
+			ans += s[i];
 		return ans;
 	}
-	T query(int l, int r) { return query(r) - query(l - 1); }
+	T query(int l, int r) {
+		return query(r) - query(l - 1);
+	}
 	int kth(T k) { // returns n if k > sum of tree
-		if (k <= 0) return -1;
+		if (k <= 0)
+			return -1;
 		int i = 0;
 		for (int pw = 1 << __lg(n); pw; pw >>= 1)
 			if (i + pw <= n && s[i + pw] < k)
@@ -25,7 +32,6 @@ struct BIT {
 		return i;
 	}
 };
-
 
 int main() {
 	cin.tie(0)->sync_with_stdio(0);
@@ -36,15 +42,13 @@ int main() {
 
 	BIT<ll> bit(n + 1);
 
-	for (int i = 0; i < n; i++)
-	{
+	for (int i = 0; i < n; i++) {
 		int x;
 		cin >> x;
 		bit.update(x, 1);
 	}
 
-	while (q--)
-	{
+	while (q--) {
 		int i;
 		cin >> i;
 
