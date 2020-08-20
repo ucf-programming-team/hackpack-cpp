@@ -21,7 +21,7 @@ jobs:
         run: sudo apt install clang-format
 
       - name: Run make format
-        run: sh ./scripts/validate-formatting.sh
+        run: sh ./doc/scripts/validate-formatting.sh
 
       - name: Build pdf
         run: make kactl
