@@ -47,3 +47,5 @@ int exampleFunction2() { return rand(); }
 int exampleFunction3(int a, int b, int c) {
   return exampleFunction2() * a * b * c;
 }
+
+void ultraOneLiner() { cout << "this should not be on a single line\n"; }
