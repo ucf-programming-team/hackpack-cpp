@@ -3,8 +3,8 @@ struct SCC {
   vector<vector<int>> adj;
   vector<int> pre, scc, low, stk;
   SCC() {}
-  SCC(const int& n) : n(n), adj(n), stk(n), 
-    pre(n), low(n), scc(n), pre(n, -1) {
+  SCC(const int& n) : n(n), adj(n), 
+    stk(n), low(n), scc(n), pre(n, -1) {
     cnt = cmps = top = 0;
   }
   void addEdge(const int &u, const int &v) {
