@@ -53,3 +53,7 @@ showexcluded: build
 
 format:
 	bash ./doc/scripts/format-all.sh .
+
+snippets:
+	find content/ -type f -name "*.*" ! -name "*.tex" ! -path "*/tex/*" | xargs -n 1 python2 content/tex/preprocessor.py -i
+	python2 content/tex/snippets.py
