@@ -1,0 +1,12 @@
+{
+    "Submasks.h": {
+        "body": [
+            "for (int mask = 0; mask < (1 << n); mask++)", 
+            "\tfor (int sub = mask; sub; sub = (sub - 1) & mask)", 
+            "// do thing"
+        ], 
+        "prefix": [
+            "hack_Submasks"
+        ]
+    }
+}

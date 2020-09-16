@@ -9,6 +9,7 @@ from __future__ import print_function
 import sys
 import getopt
 import subprocess
+import snippets
 
 
 def escape(input):
@@ -154,6 +155,10 @@ def processwithcomments(caption, instream, outstream, listingslang):
         hsh = hsh + ', '
     else:
         hsh = ''
+
+    # create snippet
+    snippets.build(caption, commands, nsource, listingslang)
+
     # Produce output
     out = []
     if warning:

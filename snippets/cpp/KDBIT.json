@@ -1,0 +1,38 @@
+{
+    "KDBIT.h": {
+        "body": [
+            "template <class T, int... Ns>", 
+            "struct BIT {", 
+            "\tT val = 0;", 
+            "\tvoid update(T v) { val += v; }", 
+            "\tT query() { return val; }", 
+            "};", 
+            "template <class T, int N, int... Ns>", 
+            "struct BIT<T, N, Ns...> {", 
+            "\tBIT<T, Ns...> bit[N + 1];", 
+            "\t// map<int, BIT<T, Ns...>> bit;", 
+            "\t// if the memory use is too high", 
+            "\ttemplate <class... Args>", 
+            "\tvoid update(int i, Args... args) {", 
+            "\t\tfor (i++; i <= N; i += i & -i) bit[i].update(args...);", 
+            "\t}", 
+            "\ttemplate <class... Args>", 
+            "\tT query(int i, Args... args) {", 
+            "\t\tT ans = 0;", 
+            "\t\tfor (i++; i; i -= i & -i) ans += bit[i].query(args...);", 
+            "\t\treturn ans;", 
+            "\t}", 
+            "\ttemplate <class... Args,", 
+            "\t\t\t\t\t\tenable_if_t<(sizeof...(Args) ==", 
+            "\t\t\t\t\t\t\t\t\t\t\t\t 2 * sizeof...(Ns))>* = nullptr>", 
+            "\tT query(int l, int r, Args... args) {", 
+            "\t\treturn query(r, args...) - query(l - 1, args...);", 
+            "\t}", 
+            "};"
+        ], 
+        "description": "$k$-dimensional BIT. \\texttt{BIT<int, N, M>}\ngives an $N \\times M$ BIT.\n\\\\ Query: \\texttt{bit.query(x1, x2, y1, y2)} Update:\n\\texttt{bit.update(x, y, delta)} Time: $O(\\log^k n)$ Status:\nTested", 
+        "prefix": [
+            "hack_KDBIT"
+        ]
+    }
+}
