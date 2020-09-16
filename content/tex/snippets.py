@@ -22,6 +22,9 @@ def spaces_to_tabs(str):
         str = pattern.sub(r'\1\t', str)
     return str
 
+def remove_extension(filename):
+    return filename.rsplit('.', 1)[0]
+
 # create a snippet for a single file, and put it in snippets/lang/name.json
 # called from the preprocessor
 def build(filename, commands, nsource, lang):
@@ -30,7 +33,7 @@ def build(filename, commands, nsource, lang):
     if lang not in langs:
         return
 
-    name = filename.split('.')[0]
+    name = remove_extension(filename)
 
     # build json object
     obj = {}
@@ -48,7 +51,7 @@ def build(filename, commands, nsource, lang):
     # dump json object into file
     with open(path + name + '.json', 'w') as f:
         json.dump({filename: obj}, f, indent=4, sort_keys=True)
-        
+
     return {filename: obj}
 
 # reads all of the snippets in a lang's snippet folder, and combines them into one

@@ -55,5 +55,7 @@ format:
 	bash ./doc/scripts/format-all.sh .
 
 snippets:
-	find content/ -type f -name "*.*" ! -name "*.tex" ! -path "*/tex/*" | xargs -n 1 python2 content/tex/preprocessor.py -i
+	find content/ -type f -name "*.*" ! -name "*.tex" ! -path "*/tex/*" -print0 \
+		| xargs -0 -n 1 \
+			python2 content/tex/preprocessor.py -i
 	python2 content/tex/snippets.py
