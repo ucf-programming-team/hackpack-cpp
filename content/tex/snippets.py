@@ -46,9 +46,9 @@ def build(filename, commands, nsource, lang):
         os.makedirs(path)
     
     # dump json object into file
-    f = open(path + name + '.json', 'w')
-    json.dump({filename: obj}, f, indent=4, sort_keys=True)
-    f.close()
+    with open(path + name + '.json', 'w') as f:
+        json.dump({filename: obj}, f, indent=4, sort_keys=True)
+        
     return {filename: obj}
 
 # reads all of the snippets in a lang's snippet folder, and combines them into one
@@ -65,15 +65,13 @@ def combine():
             
         # dump each json object into the lang's master object
         for filename in os.listdir(lang_path):
-            f = open(lang_path + filename, 'r')
-            lang_obj.update(json.load(f))
+            with open(lang_path + filename, 'r') as f:
+                lang_obj.update(json.load(f))
 
         # dump nonempty json object into file
         if len(lang_obj) > 0:
-            path = 'snippets/' + lang + '.json'
-            f = open(path, 'w')
-            json.dump(lang_obj, f, indent=4, sort_keys=True)
-            f.close()
+            with open('snippets/' + lang + '.json', 'w') as f:
+                json.dump(lang_obj, f, indent=4, sort_keys=True)
 
 def main():
     combine()
