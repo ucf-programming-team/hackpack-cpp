@@ -14,12 +14,13 @@ langs = {
     'Java': 'java',
     'Python': 'python' 
 }
-pattern = re.compile(r'^(\t*) {2}')
+tab_pattern = re.compile(r'^(\t*) {2}')
+line_pattern = re.compile(r'\r?\n')
 
 # convert a line that starts with tabs into one that starts with spaces
 def spaces_to_tabs(str):
-    while pattern.match(str):
-        str = pattern.sub(r'\1\t', str)
+    while tab_pattern.match(str):
+        str = tab_pattern.sub(r'\1\t', str)
     return str
 
 def remove_extension(filename):
@@ -38,8 +39,7 @@ def build(filename, commands, nsource, lang):
     # build json object
     obj = {}
     obj['prefix'] = [prefix + name]
-    obj['body'] = [spaces_to_tabs(line) for line in nsource.split('\n')]
-
+    obj['body'] = [spaces_to_tabs(line) for line in line_pattern.split(nsource)]
     if 'Description' in commands:
         obj['description'] = commands['Description']
 
