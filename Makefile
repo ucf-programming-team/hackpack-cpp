@@ -32,7 +32,7 @@ clean:
 veryclean: clean
 	rm -f kactl.pdf test-session.pdf
 
-.PHONY: help fast kactl clean veryclean format
+.PHONY: help fast kactl clean veryclean format snippets
 
 build:
 	mkdir -p build/
