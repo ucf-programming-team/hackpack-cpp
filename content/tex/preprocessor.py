@@ -147,6 +147,11 @@ def processwithcomments(caption, instream, outstream, listingslang, make_snippet
         nsource = nsource.rstrip() + source[end:]
     nsource = nsource.strip()
 
+    # create snippet
+    if make_snippet:
+        snippets.build(caption, commands, nsource, listingslang)
+        return
+
     if listingslang in ['C++', 'Java']:
         hash_script = 'hash'
         p = subprocess.Popen(['sh', 'content/contest/%s.sh' % hash_script], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
@@ -156,11 +161,6 @@ def processwithcomments(caption, instream, outstream, listingslang, make_snippet
         hsh = hsh + ', '
     else:
         hsh = ''
-
-    # create snippet
-    if make_snippet:
-        snippets.build(caption, commands, nsource, listingslang)
-
     # Produce output
     out = []
     if warning:
