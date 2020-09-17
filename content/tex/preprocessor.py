@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # encoding: utf-8
 
 # Source code preprocessor for KACTL build process. Compatible with both Python 2 and 3;
@@ -150,7 +150,8 @@ def processwithcomments(caption, instream, outstream, listingslang):
     if listingslang in ['C++', 'Java']:
         hash_script = 'hash'
         p = subprocess.Popen(['sh', 'content/contest/%s.sh' % hash_script], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-        hsh, _ = p.communicate(nsource)
+        hsh_bytes, _ = p.communicate(nsource.encode())
+        hsh = hsh_bytes.decode()
         hsh = hsh.split(None, 1)[0]
         hsh = hsh + ', '
     else:
@@ -196,7 +197,7 @@ def processraw(caption, instream, outstream, listingslang = 'raw'):
         print(source, file=outstream)
         print(r"\end{lstlisting}", file=outstream)
     except:
-        print("\kactlerror{Could not read source.}", file=outstream)
+        print(r"\kactlerror{Could not read source.}", file=outstream)
 
 def parse_include(line):
     line = line.strip()

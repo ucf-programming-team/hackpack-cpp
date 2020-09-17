@@ -21,10 +21,9 @@ fast: | build
 	$(LATEXCMD) content/kactl.tex </dev/null
 	cp build/kactl.pdf kactl.pdf
 
-kactl: test-session.pdf | build
+kactl: test-session.pdf | build snippets
 	$(LATEXCMD) content/kactl.tex && $(LATEXCMD) content/kactl.tex
 	cp build/kactl.pdf kactl.pdf
-	python2 content/tex/snippets.py
 
 clean:
 	cd build && rm -f kactl.aux kactl.log kactl.tmp kactl.toc kactl.pdf kactl.ptc
@@ -56,6 +55,6 @@ format:
 
 snippets:
 	find content/ -type f -name "*.*" ! -name "*.tex" ! -path "*/tex/*" -print0 \
-		| xargs -0 -n 1 \
-			python2 content/tex/preprocessor.py -i
-	python2 content/tex/snippets.py
+		| xargs -0 -n 1 -I{} \
+			python3 content/tex/preprocessor.py -i {} > /dev/null || exit 0
+	python3 content/tex/snippets.py
