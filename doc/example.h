@@ -53,5 +53,5 @@ void ultraOneLiner() {
 }
 
 void badFormatting() {
-  for (int i = 0; i < 1000; i++) { cout << i << }
+  for (int i = 0; i < 1000; i++) { cout << i << endl; }
 }
