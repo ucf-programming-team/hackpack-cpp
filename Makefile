@@ -57,5 +57,5 @@ format:
 snippets:
 	find content/ -type f -name "*.*" ! -name "*.tex" ! -path "*/tex/*" -print0 \
 		| xargs -0 -n 1 -I{} \
-			python3 content/tex/preprocessor.py -i {} > /dev/null || exit 0
+			python3 content/tex/preprocessor.py -s -i {} > /dev/null || exit 0
 	python3 content/tex/snippets.py

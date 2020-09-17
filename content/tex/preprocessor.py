@@ -70,7 +70,7 @@ def find_start_comment(source, start=None):
 
     return first
 
-def processwithcomments(caption, instream, outstream, listingslang):
+def processwithcomments(caption, instream, outstream, listingslang, make_snippet):
     knowncommands = ['Author', 'Date', 'Description', 'Source', 'Time', 'Memory', 'License', 'Status', 'Usage', 'Details']
     requiredcommands = []
     includelist = []
@@ -158,7 +158,8 @@ def processwithcomments(caption, instream, outstream, listingslang):
         hsh = ''
 
     # create snippet
-    snippets.build(caption, commands, nsource, listingslang)
+    if make_snippet:
+        snippets.build(caption, commands, nsource, listingslang)
 
     # Produce output
     out = []
@@ -244,8 +245,9 @@ def main():
     instream = sys.stdin
     outstream = sys.stdout
     print_header_value = None
+    make_snippet = False
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "ho:i:l:c:", ["help", "output=", "input=", "language=", "caption=", "print-header="])
+        opts, args = getopt.getopt(sys.argv[1:], "ho:i:l:c:s", ["help", "output=", "input=", "language=", "caption=", "print-header=", "snippet"])
         for option, value in opts:
             if option in ("-h", "--help"):
                 print("This is the help section for this program")
@@ -255,6 +257,7 @@ def main():
                 print("\t -h --help")
                 print("\t -i --input")
                 print("\t -l --language")
+                print("\t -s --snippet")
                 print("\t --print-header")
                 return
             if option in ("-o", "--output"):
@@ -271,14 +274,16 @@ def main():
                 caption = value
             if option == "--print-header":
                 print_header_value = value
+            if option in ("-s", "--snippet"):
+                make_snippet = True
         if print_header_value is not None:
             print_header(print_header_value, outstream)
             return
         print(" * \x1b[1m{}\x1b[0m".format(caption))
         if language in ["cpp", "cc", "c", "h", "hpp"]:
-            processwithcomments(caption, instream, outstream, 'C++')
+            processwithcomments(caption, instream, outstream, 'C++', make_snippet)
         elif language in ["java", "kt"]:
-            processwithcomments(caption, instream, outstream, 'Java')
+            processwithcomments(caption, instream, outstream, 'Java', make_snippet)
         elif language == "ps":
             processraw(caption, instream, outstream) # PostScript was added in listings v1.4
         elif language == "raw":
@@ -288,7 +293,7 @@ def main():
         elif language == "sh":
             processraw(caption, instream, outstream, 'bash')
         elif language == "py":
-            processwithcomments(caption, instream, outstream, 'Python')
+            processwithcomments(caption, instream, outstream, 'Python', make_snippet)
         elif language == "rawpy":
             processraw(caption, instream, outstream, 'Python')
         else:
