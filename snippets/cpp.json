@@ -51,6 +51,91 @@
             "hack_DSU"
         ]
     }, 
+    "Fraction.h": {
+        "body": [
+            "// regular fractions, constructor uses GCD", 
+            "// constant time operations with cross multiplication", 
+            "template <typename T>", 
+            "struct Q {", 
+            "\tT a, b;", 
+            "\tQ(T p, T q = 1) {", 
+            "\t\tT g = gcd(p, q);", 
+            "\t\ta = p / g;", 
+            "\t\tb = q / g;", 
+            "\t\tif (b < 0) a = -a, b = -b;", 
+            "\t}", 
+            "\tT gcd(T x, T y) const {", 
+            "\t\treturn __gcd(x, y);", 
+            "\t} // switch if using BigInt", 
+            "\tQ operator+(const Q& o) const {", 
+            "\t\treturn {a * o.b + o.a * b, b * o.b};", 
+            "\t}", 
+            "\tQ operator-(const Q& o) const {", 
+            "\t\treturn *this + Q(-o.a, o.b);", 
+            "\t}", 
+            "\tQ operator*(const Q& o) const { return {a * o.a, b * o.b}; }", 
+            "\tQ operator/(const Q& o) const { return *this * Q(o.b, o.a); }", 
+            "\tQ recip() const { return {b, a}; }", 
+            "\tint signum() const { return (a > 0) - (a < 0); }", 
+            "\tbool operator<(const Q& o) const {", 
+            "\t\treturn a * o.b < o.a * b;", 
+            "\t}", 
+            "\tfriend ostream& operator<<(ostream& cout, const Q& o) {", 
+            "\t\treturn cout << o.a << \"/\" << o.b;", 
+            "\t}", 
+            "};", 
+            "", 
+            "// overflow fractions, everything uses GCD", 
+            "// comparison is completely safe, others are safer but still", 
+            "// can overflow", 
+            "template <typename T>", 
+            "struct QO {", 
+            "\tT a, b;", 
+            "\tQO(T p, T q = 1) {", 
+            "\t\tT g = gcd(p, q);", 
+            "\t\ta = p / g;", 
+            "\t\tb = q / g;", 
+            "\t\tif (b < 0) a = -a, b = -b;", 
+            "\t}", 
+            "\tT gcd(T x, T y) const { return __gcd(x, y); }", 
+            "\tQO operator+(const QO& o) const {", 
+            "\t\tT g = gcd(b, o.b), bb = b / g, obb = o.b / g;", 
+            "\t\treturn {a * obb + o.a * bb, o.b * obb};", 
+            "\t}", 
+            "\tQO operator-(const QO& o) const {", 
+            "\t\treturn *this + QO(-o.a, o.b);", 
+            "\t}", 
+            "\tQO operator*(const QO& o) const {", 
+            "\t\tT g1 = gcd(a, o.b), g2 = gcd(o.a, b);", 
+            "\t\treturn {(a / g1) * (o.a / g2), (b / g2) * (o.b / g1)};", 
+            "\t}", 
+            "\tQO operator/(const QO& o) const {", 
+            "\t\treturn *this * QO(o.b, o.a);", 
+            "\t}", 
+            "\tQO recip() const { return {b, a}; }", 
+            "\tint signum() const { return (a > 0) - (a < 0); }", 
+            "\tstatic bool lessThan(T a, T b, T x, T y) {", 
+            "\t\tif (a / b != x / y) return a / b < x / y;", 
+            "\t\tif (x % y == 0) return false;", 
+            "\t\tif (a % b == 0) return true;", 
+            "\t\treturn lessThan(y, x % y, b, a % b);", 
+            "\t}", 
+            "\tbool operator<(const QO& o) const {", 
+            "\t\tif (this->signum() != o.signum() || a == 0) return a < o.a;", 
+            "\t\tif (a < 0)", 
+            "\t\t\treturn lessThan(abs(o.a), o.b, abs(a), b);", 
+            "\t\telse", 
+            "\t\t\treturn lessThan(a, b, o.a, o.b);", 
+            "\t}", 
+            "\tfriend ostream& operator<<(ostream& cout, const QO& o) {", 
+            "\t\treturn cout << o.a << \"/\" << o.b;", 
+            "\t}", 
+            "};"
+        ], 
+        "prefix": [
+            "hack_Fraction"
+        ]
+    }, 
     "KDBIT.h": {
         "body": [
             "template <class T, int... Ns>", 
@@ -106,6 +191,65 @@
             "hack_NDimensionalVector"
         ]
     }, 
+    "PrimeSieve.h": {
+        "body": [
+            "// standard prime sieve, O(n log log n)", 
+            "// can sieve up to 1e8 ish", 
+            "// returns all primes strictly less than lim", 
+            "", 
+            "const int MAX_PR = 5'000'000;", 
+            "bitset<MAX_PR> isprime;", 
+            "vector<int> primeSieve(int lim) {", 
+            "\tisprime.set();", 
+            "\tisprime[0] = isprime[1] = 0;", 
+            "\tfor (int i = 4; i < lim; i += 2) isprime[i] = 0;", 
+            "\tfor (int i = 3; i * i < lim; i += 2)", 
+            "\t\tif (isprime[i])", 
+            "\t\t\tfor (int j = i * i; j < lim; j += i * 2) isprime[j] = 0;", 
+            "\tvector<int> pr;", 
+            "\tfor (int i = 2; i < lim; i++)", 
+            "\t\tif (isprime[i]) pr.push_back(i);", 
+            "\treturn pr;", 
+            "}"
+        ], 
+        "prefix": [
+            "hack_PrimeSieve"
+        ]
+    }, 
+    "PrimeSieveFast.h": {
+        "body": [
+            "// segmented prime sieve", 
+            "// much faster than the normal sieve, can do up to 1e9 in 1.5 s", 
+            "// returns all primes strictly less than LIM", 
+            "", 
+            "const int LIM = 1e8;", 
+            "bitset<LIM> isPrime;", 
+            "vector<int> primeSieve() {", 
+            "\tconst int S = round(sqrt(LIM)), R = LIM / 2;", 
+            "\tvector<int> pr = {2}, sieve(S + 1);", 
+            "\tpr.reserve(int(LIM / log(LIM) * 1.1));", 
+            "\tvector<pair<int, int>> cp;", 
+            "\tfor (int i = 3; i <= S; i += 2)", 
+            "\t\tif (!sieve[i]) {", 
+            "\t\t\tcp.push_back({i, i * i / 2});", 
+            "\t\t\tfor (int j = i * i; j <= S; j += 2 * i) sieve[j] = 1;", 
+            "\t\t}", 
+            "\tfor (int L = 1; L <= R; L += S) {", 
+            "\t\tarray<bool, S> block{};", 
+            "\t\tfor (auto& [p, idx] : cp)", 
+            "\t\t\tfor (int i = idx; i < S + L; idx = (i += p))", 
+            "\t\t\t\tblock[i - L] = 1;", 
+            "\t\tfor (int i = 0; i < min(S, R - L); i++)", 
+            "\t\t\tif (!block[i]) pr.push_back((L + i) * 2 + 1);", 
+            "\t}", 
+            "\tfor (int i : pr) isPrime[i] = 1;", 
+            "\treturn pr;", 
+            "}"
+        ], 
+        "prefix": [
+            "hack_PrimeSieveFast"
+        ]
+    }, 
     "RMQ.h": {
         "body": [
             "template <typename T, class Compare = less<T>>", 
@@ -137,6 +281,38 @@
         ], 
         "prefix": [
             "hack_Submasks"
+        ]
+    }, 
+    "ZValues.h": {
+        "body": [
+            "vector<int> zValues(string& s) {", 
+            "\tint n = ( int )s.length();", 
+            "\tvector<int> z(n);", 
+            "\tfor (int i = 1, l = 0, r = 0; i < n; ++i) {", 
+            "\t\tif (i <= r) z[i] = min(r - i + 1, z[i - l]);", 
+            "\t\twhile (i + z[i] < n && s[z[i]] == s[i + z[i]]) ++z[i];", 
+            "\t\tif (i + z[i] - 1 > r) l = i, r = i + z[i] - 1;", 
+            "\t}", 
+            "\treturn z;", 
+            "}"
+        ], 
+        "prefix": [
+            "hack_ZValues"
+        ]
+    }, 
+    "template.cpp": {
+        "body": [
+            "using namespace std;", 
+            "", 
+            "using ll = long long;", 
+            "", 
+            "int main() {", 
+            "\tcin.tie(0)->sync_with_stdio(0);", 
+            "\tcin.exceptions(cin.failbit);", 
+            "}"
+        ], 
+        "prefix": [
+            "hack_template"
         ]
     }
 }
