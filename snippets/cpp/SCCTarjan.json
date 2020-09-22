@@ -39,7 +39,7 @@
             "\t}",
             "} // namespace SCCTarjan"
         ],
-        "description": "Finds strongly connected components of a\ndirected graph. Visits/indexes SCCs in reverse\ntopological order.",
+        "description": "Finds strongly connected components of a\ndirected graph. Visits/indexes SCCs in reverse topological\norder.",
         "prefix": [
             "hack_SCCTarjan"
         ]

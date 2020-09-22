@@ -1,0 +1,53 @@
+{
+    "FractionOverflow.h": {
+        "body": [
+            "template <typename T>",
+            "struct QO {",
+            "\tT a, b;",
+            "\tQO(T p, T q = 1) {",
+            "\t\tT g = gcd(p, q);",
+            "\t\ta = p / g;",
+            "\t\tb = q / g;",
+            "\t\tif (b < 0) a = -a, b = -b;",
+            "\t}",
+            "\tT gcd(T x, T y) const { return __gcd(x, y); }",
+            "\tQO operator+(const QO& o) const {",
+            "\t\tT g = gcd(b, o.b), bb = b / g, obb = o.b / g;",
+            "\t\treturn {a * obb + o.a * bb, o.b * obb};",
+            "\t}",
+            "\tQO operator-(const QO& o) const {",
+            "\t\treturn *this + QO(-o.a, o.b);",
+            "\t}",
+            "\tQO operator*(const QO& o) const {",
+            "\t\tT g1 = gcd(a, o.b), g2 = gcd(o.a, b);",
+            "\t\treturn {(a / g1) * (o.a / g2), (b / g2) * (o.b / g1)};",
+            "\t}",
+            "\tQO operator/(const QO& o) const {",
+            "\t\treturn *this * QO(o.b, o.a);",
+            "\t}",
+            "\tQO recip() const { return {b, a}; }",
+            "\tint signum() const { return (a > 0) - (a < 0); }",
+            "\tstatic bool lessThan(T a, T b, T x, T y) {",
+            "\t\tif (a / b != x / y) return a / b < x / y;",
+            "\t\tif (x % y == 0) return false;",
+            "\t\tif (a % b == 0) return true;",
+            "\t\treturn lessThan(y, x % y, b, a % b);",
+            "\t}",
+            "\tbool operator<(const QO& o) const {",
+            "\t\tif (this->signum() != o.signum() || a == 0) return a < o.a;",
+            "\t\tif (a < 0)",
+            "\t\t\treturn lessThan(abs(o.a), o.b, abs(a), b);",
+            "\t\telse",
+            "\t\t\treturn lessThan(a, b, o.a, o.b);",
+            "\t}",
+            "\tfriend ostream& operator<<(ostream& cout, const QO& o) {",
+            "\t\treturn cout << o.a << \"/\" << o.b;",
+            "\t}",
+            "};"
+        ],
+        "description": "Safer struct for representing\nfractions/rationals. Comparison is 100\\% overflow safe;\nother ops are safer but can still overflow. All ops are\n$O(\\log N)$.",
+        "prefix": [
+            "hack_FractionOverflow"
+        ]
+    }
+}

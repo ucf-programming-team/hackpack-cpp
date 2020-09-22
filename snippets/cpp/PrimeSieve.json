@@ -1,10 +1,6 @@
 {
     "PrimeSieve.h": {
         "body": [
-            "// standard prime sieve, O(n log log n)",
-            "// can sieve up to 1e8 ish",
-            "// returns all primes strictly less than lim",
-            "",
             "const int MAX_PR = 5'000'000;",
             "bitset<MAX_PR> isprime;",
             "vector<int> primeSieve(int lim) {",
@@ -20,6 +16,7 @@
             "\treturn pr;",
             "}"
         ],
+        "description": "Prime sieve for generating all primes up\nto a certain limit. isprime$[i]$ is true iff $i$ is a prime.",
         "prefix": [
             "hack_PrimeSieve"
         ]

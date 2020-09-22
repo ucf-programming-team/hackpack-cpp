@@ -82,8 +82,6 @@
     },
     "Fraction.h": {
         "body": [
-            "// regular fractions, constructor uses GCD",
-            "// constant time operations with cross multiplication",
             "template <typename T>",
             "struct Q {",
             "\tT a, b;",
@@ -93,9 +91,7 @@
             "\t\tb = q / g;",
             "\t\tif (b < 0) a = -a, b = -b;",
             "\t}",
-            "\tT gcd(T x, T y) const {",
-            "\t\treturn __gcd(x, y);",
-            "\t} // switch if using BigInt",
+            "\tT gcd(T x, T y) const { return __gcd(x, y); }",
             "\tQ operator+(const Q& o) const {",
             "\t\treturn {a * o.b + o.a * b, b * o.b};",
             "\t}",
@@ -112,11 +108,15 @@
             "\tfriend ostream& operator<<(ostream& cout, const Q& o) {",
             "\t\treturn cout << o.a << \"/\" << o.b;",
             "\t}",
-            "};",
-            "",
-            "// overflow fractions, everything uses GCD",
-            "// comparison is completely safe, others are safer but still",
-            "// can overflow",
+            "};"
+        ],
+        "description": "Struct for representing fractions/rationals.\nAll ops are $O(\\log N)$ due to GCD in constructor.\nUses cross multiplication.",
+        "prefix": [
+            "hack_Fraction"
+        ]
+    },
+    "FractionOverflow.h": {
+        "body": [
             "template <typename T>",
             "struct QO {",
             "\tT a, b;",
@@ -161,8 +161,9 @@
             "\t}",
             "};"
         ],
+        "description": "Safer struct for representing\nfractions/rationals. Comparison is 100\\% overflow safe;\nother ops are safer but can still overflow. All ops are\n$O(\\log N)$.",
         "prefix": [
-            "hack_Fraction"
+            "hack_FractionOverflow"
         ]
     },
     "KDBIT.h": {
@@ -222,10 +223,6 @@
     },
     "PrimeSieve.h": {
         "body": [
-            "// standard prime sieve, O(n log log n)",
-            "// can sieve up to 1e8 ish",
-            "// returns all primes strictly less than lim",
-            "",
             "const int MAX_PR = 5'000'000;",
             "bitset<MAX_PR> isprime;",
             "vector<int> primeSieve(int lim) {",
@@ -241,16 +238,13 @@
             "\treturn pr;",
             "}"
         ],
+        "description": "Prime sieve for generating all primes up\nto a certain limit. isprime$[i]$ is true iff $i$ is a prime.",
         "prefix": [
             "hack_PrimeSieve"
         ]
     },
     "PrimeSieveFast.h": {
         "body": [
-            "// segmented prime sieve",
-            "// much faster than the normal sieve, can do up to 1e9 in 1.5 s",
-            "// returns all primes strictly less than LIM",
-            "",
             "const int LIM = 1e8;",
             "bitset<LIM> isPrime;",
             "vector<int> primeSieve() {",
@@ -275,6 +269,7 @@
             "\treturn pr;",
             "}"
         ],
+        "description": "Prime sieve for generating all primes smaller\nthan LIM. Time: LIM=1e9 $\\approx$ 1.5s Details: Despite its\nn log log n complexity, segmented sieve is still faster than\nother options, including bitset sieves and linear sieves.\nThis is primarily due to its low memory usage, which reduces\ncache misses. This implementation skips even numbers.\n\nBenchmark can be found here: https://ideone.com/e7TbX4\n\nThe line `for (int i=idx; i<S+L; idx = (i += p))` is done on\npurpose for performance reasons. Se\nhttps://github.com/kth-competitive-programming/kactl/pull/166#discussion_r408354338",
         "prefix": [
             "hack_PrimeSieveFast"
         ]
@@ -379,7 +374,7 @@
             "\t}",
             "} // namespace SCCTarjan"
         ],
-        "description": "Finds strongly connected components of a\ndirected graph. Visits/indexes SCCs in reverse\ntopological order.",
+        "description": "Finds strongly connected components of a\ndirected graph. Visits/indexes SCCs in reverse topological\norder.",
         "prefix": [
             "hack_SCCTarjan"
         ]
