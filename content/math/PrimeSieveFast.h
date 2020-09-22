@@ -1,6 +1,17 @@
-// segmented prime sieve
-// much faster than the normal sieve, can do up to 1e9 in 1.5 s
-// returns all primes strictly less than LIM
+/**
+ * Description: Prime sieve for generating all primes smaller
+ * than LIM. Time: LIM=1e9 $\approx$ 1.5s Details: Despite its
+ * n log log n complexity, segmented sieve is still faster than
+ * other options, including bitset sieves and linear sieves.
+ * This is primarily due to its low memory usage, which reduces
+ * cache misses. This implementation skips even numbers.
+ *
+ * Benchmark can be found here: https://ideone.com/e7TbX4
+ *
+ * The line `for (int i=idx; i<S+L; idx = (i += p))` is done on
+ * purpose for performance reasons. Se
+ * https://github.com/kth-competitive-programming/kactl/pull/166#discussion_r408354338
+ */
 
 const int LIM = 1e8;
 bitset<LIM> isPrime;

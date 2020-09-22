@@ -1,6 +1,9 @@
-// standard prime sieve, O(n log log n)
-// can sieve up to 1e8 ish
-// returns all primes strictly less than lim
+/**
+ * Description: Prime sieve for generating all primes up
+ * to a certain limit. isprime$[i]$ is true iff $i$ is a prime.
+ * Time: lim=100'000'000 $\approx$ 0.8 s. Runs 30\% faster if
+ * only odd indices are stored.
+ */
 
 const int MAX_PR = 5'000'000;
 bitset<MAX_PR> isprime;
