@@ -4,7 +4,7 @@
  * topological order.
  * Time: $O(|V| + |E|)$
  * Usage: scc(graph) returns an array that has the ID
- * of each node's SCC. 
+ * of each node's SCC.
  */
 
 namespace SCCKosaraju {

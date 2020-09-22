@@ -4,8 +4,8 @@
  * topological order.
  * Time: $O(|V| + |E|)$
  * Usage: scc(graph) returns an array that has the ID
- * of each node's SCC. 
- * scc(graph, [\&](vector<int>& v) { ... }) calls the 
+ * of each node's SCC.
+ * scc(graph, [\&](vector<int>& v) { ... }) calls the
  * lambda on each SCC, and returns the same array.
  */
 
