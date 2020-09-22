@@ -269,7 +269,7 @@
             "\treturn pr;",
             "}"
         ],
-        "description": "Prime sieve for generating all primes smaller\nthan LIM. Time: LIM=1e9 $\\approx$ 1.5s Details: Despite its\nn log log n complexity, segmented sieve is still faster than\nother options, including bitset sieves and linear sieves.\nThis is primarily due to its low memory usage, which reduces\ncache misses. This implementation skips even numbers.\n\nBenchmark can be found here: https://ideone.com/e7TbX4\n\nThe line `for (int i=idx; i<S+L; idx = (i += p))` is done on\npurpose for performance reasons. Se\nhttps://github.com/kth-competitive-programming/kactl/pull/166#discussion_r408354338",
+        "description": "Prime sieve for generating all primes smaller\nthan LIM.\n",
         "prefix": [
             "hack_PrimeSieveFast"
         ]
