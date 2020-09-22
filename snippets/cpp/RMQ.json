@@ -1,0 +1,25 @@
+{
+    "RMQ.h": {
+        "body": [
+            "template <typename T, class Compare = less<T>>",
+            "struct RMQ {",
+            "\tvector<vector<T>> t;",
+            "\tCompare cmp;",
+            "\tRMQ(vector<T>& a) : t(__lg(a.size()) + 1, a) {",
+            "\t\tint n = a.size(), lg = __lg(n);",
+            "\t\tfor (int k = 1, len = 1; k <= lg; k++, len <<= 1)",
+            "\t\t\tfor (int i = 0; i + 2 * len - 1 < n; i++)",
+            "\t\t\t\tt[k][i] = min(t[k - 1][i], t[k - 1][i + len], cmp);",
+            "\t}",
+            "\tT query(int a, int b) {",
+            "\t\tint k = __lg(b - a + 1), len = 1 << k;",
+            "\t\treturn min(t[k][a], t[k][b - len + 1], cmp);",
+            "\t}",
+            "};"
+        ],
+        "description": "Constant time subarray min/max queries for a\nfixed array Time: $O(n log n)$ initialization and $O(1)$\nqueries. Status: Tested",
+        "prefix": [
+            "hack_RMQ"
+        ]
+    }
+}

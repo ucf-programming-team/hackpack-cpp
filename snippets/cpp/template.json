@@ -1,0 +1,17 @@
+{
+    "template.cpp": {
+        "body": [
+            "using namespace std;",
+            "",
+            "using ll = long long;",
+            "",
+            "int main() {",
+            "\tcin.tie(0)->sync_with_stdio(0);",
+            "\tcin.exceptions(cin.failbit);",
+            "}"
+        ],
+        "prefix": [
+            "hack_template"
+        ]
+    }
+}
