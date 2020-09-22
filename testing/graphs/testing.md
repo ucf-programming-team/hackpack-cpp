@@ -1,0 +1,3 @@
+- Dijkstra
+    - https://open.kattis.com/problems/shortestpath1
+    - https://open.kattis.com/problems/bigtruck

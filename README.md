@@ -75,7 +75,7 @@ bold = code written and untested
         - [ ] tarjan 
         - [ ] kosaraju (easy to type)
     - [ ] 2SAT
-    - [ ] dijkstra
+    - [x] dijkstra
     - [ ] bellman ford
     - [ ] floyd warshall
     - flow
