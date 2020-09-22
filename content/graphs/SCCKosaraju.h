@@ -1,3 +1,12 @@
+/**
+ * Description: Finds strongly connected components of a
+ * directed graph. Visits/indexes SCCs in
+ * topological order.
+ * Time: $O(|V| + |E|)$
+ * Usage: scc(graph) returns an array that has the ID
+ * of each node's SCC. 
+ */
+
 namespace SCCKosaraju {
   vector<vector<int>> adj, radj;
   vector<int> todo, comp;
