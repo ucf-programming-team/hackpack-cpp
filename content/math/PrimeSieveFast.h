@@ -6,11 +6,7 @@
  * This is primarily due to its low memory usage, which reduces
  * cache misses. This implementation skips even numbers.
  *
- * Benchmark can be found here: https://ideone.com/e7TbX4
- *
- * The line `for (int i=idx; i<S+L; idx = (i += p))` is done on
- * purpose for performance reasons. Se
- * https://github.com/kth-competitive-programming/kactl/pull/166#discussion_r408354338
+ * Pulled directly from KACTL, see there for details.
  */
 
 const int LIM = 1e8;
