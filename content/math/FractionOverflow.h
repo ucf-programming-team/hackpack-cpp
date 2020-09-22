@@ -5,9 +5,9 @@
  * $O(\log N)$.
  */
 
-template <typename T> // overflow fractions, all ops use GCD
-struct QO {           // comparison is completely safe
-  T a, b; // arithmetic is safer but still can overflow
+template <typename T>
+struct QO {
+  T a, b;
   QO(T p, T q = 1) {
     T g = gcd(p, q);
     a = p / g;
