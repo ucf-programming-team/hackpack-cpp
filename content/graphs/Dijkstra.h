@@ -1,6 +1,6 @@
 /**
  * Description: Computes shortest paths from s
- * to any node reachable from s. 
+ * to any node reachable from s.
  * Pass in an adjacency list of pairs (node, weight).
  * Time: $O((|V| + |E|) \log{|V|})$
  */
