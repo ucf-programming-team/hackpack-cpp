@@ -62,7 +62,7 @@ node* splay(node* x) {
 // the returned node becomes the new root, update the root
 // pointer!
 node* nodeAt(node* x, int pos) {
-  if (!x || pos >= cnt(x)) return 0;
+  if (!x) return 0;
   while (prop(x), cnt(x->ch[0]) != pos)
     if (pos < cnt(x->ch[0]))
       x = x->ch[0];
@@ -81,7 +81,8 @@ node* merge(node* l, node* r) {
 // first is everything < pos, second is >= pos
 pair<node*, node*> split(node* t, int pos) {
   if (pos <= 0 || !t) return {0, t};
-  node *l = nodeAt(t, pos - 1), *r = l ? l->ch[1] : 0;
+  if (pos > cnt(t)) return {t, 0};
+  node *l = nodeAt(t, pos - 1), *r = l->ch[1];
   if (r) l->ch[1] = r->p = 0;
   return {update(l), update(r)};
 }
