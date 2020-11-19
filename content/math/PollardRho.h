@@ -1,8 +1,7 @@
-
 /**
  * Description: Factorize numbers using Pollard's Rho
  * Returns a vector of prime factors
- */
+*/
 
 // if __int128 is unavailable, use binary multiplication like
 // fast pow
