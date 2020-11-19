@@ -81,7 +81,7 @@ ll brent(ll n, ll x0 = 2, ll c = 1) {
   }
   return g;
 }
-int primes[] = {2, 3, 5, 7, 11, 13, 17};
+const int primes[] = {2, 3, 5, 7, 11, 13, 17};
 
 vector<ll> factor(ll x) {
   vector<ll> ans(0);
