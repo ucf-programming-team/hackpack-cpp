@@ -17,7 +17,7 @@ inline lll mult(lll a, lll b, lll mod) {
   return result;
 }
 
-inline lll lllabs(lll x) { return x < 0 ? -x : x; }
+constexpr lll lllabs(lll x) { return x < 0 ? -x : x; }
 
 inline lll lllgcd(lll a, lll b) {
   if (a == 0) return b;
@@ -92,7 +92,7 @@ lll brent(lll n, lll x0 = 2, lll c = 1) {
   return g;
 }
 
-int primes[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
+const int primes[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
 
 vector<lll> factor(lll x) {
   vector<lll> ans(0);
