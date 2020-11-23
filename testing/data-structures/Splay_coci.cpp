@@ -1,3 +1,4 @@
+// tested on https://www.acmicpc.net/problem/2844
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -9,8 +10,7 @@ struct node {
   ll val, sum, shift = 0, slope = 0;
   bool wipe = 0;
 
-  node(int val, node* l = 0, node* r = 0)
-    : ch{l, r}, val(val) {
+  node(int val, node* l = 0, node* r = 0): ch{l, r}, val(val) {
     sum = val;
   }
 };

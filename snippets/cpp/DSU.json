@@ -3,7 +3,7 @@
         "body": [
             "struct DSU {",
             "\tvector<int> s;",
-            "\tDSU(int n) : s(n, -1) {}",
+            "\tDSU(int n): s(n, -1) {}",
             "\tint find(int i) { return s[i] < 0 ? i : s[i] = find(s[i]); }",
             "\tbool join(int a, int b) {",
             "\t\ta = find(a), b = find(b);",
