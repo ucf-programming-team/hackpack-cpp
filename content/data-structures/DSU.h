@@ -1,7 +1,6 @@
 /**
- * Description: Maintains union of disjoint sets
- * Time: $O(\alpha(N))$
- * Status: Tested
+ * Description: Maintains union of disjoint sets.
+ * Time: $O(\alpha(n))$ amortized
  */
 
 struct DSU {
