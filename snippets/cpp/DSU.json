@@ -16,7 +16,7 @@
             "\tbool same(int a, int b) { return find(a) == find(b); }",
             "};"
         ],
-        "description": "Maintains union of disjoint sets",
+        "description": "Maintains union of disjoint sets.",
         "prefix": [
             "hack_DSU"
         ]

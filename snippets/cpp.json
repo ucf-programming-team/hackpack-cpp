@@ -46,9 +46,39 @@
             "\tbool same(int a, int b) { return find(a) == find(b); }",
             "};"
         ],
-        "description": "Maintains union of disjoint sets",
+        "description": "Maintains union of disjoint sets.",
         "prefix": [
             "hack_DSU"
+        ]
+    },
+    "DSURestorable.h": {
+        "body": [
+            "struct RestorableDSU {",
+            "\tvector<int> s;",
+            "\tstack<pair<int, int>> stk;",
+            "\tRestorableDSU(int n) : s(n, -1) {}",
+            "\tint find(int i) { return s[i] < 0 ? i : find(s[i]); }",
+            "\tbool join(int a, int b) {",
+            "\t\ta = find(a), b = find(b);",
+            "\t\tif (a == b) return false;",
+            "\t\tif (s[a] > s[b]) swap(a, b);",
+            "\t\tstk.emplace(a, s[a]);",
+            "\t\tstk.emplace(b, s[b]);",
+            "\t\ts[a] += s[b], s[b] = a;",
+            "\t\treturn true;",
+            "\t}",
+            "\tint time() { return stk.size(); }",
+            "\tvoid revert(int t) {",
+            "\t\twhile (stk.size() > t)",
+            "\t\t\ts[stk.top().first] = stk.top().second, stk.pop();",
+            "\t}",
+            "\tint size(int i) { return -s[find(i)]; }",
+            "\tbool same(int a, int b) { return find(a) == find(b); }",
+            "};"
+        ],
+        "description": "Maintains union of disjoint sets, and can\nrevert to previous states. Time: $O(\\log{n})$ queries and\nunions, $O(\\delta time)$ for restoring.",
+        "prefix": [
+            "hack_DSURestorable"
         ]
     },
     "Dijkstra.h": {
@@ -456,6 +486,7 @@
             "// first is everything < pos, second is >= pos",
             "pair<node*, node*> split(node* t, int pos) {",
             "\tif (pos <= 0 || !t) return {0, t};",
+            "\tif (pos > cnt(t)) return {t, 0};",
             "\tnode *l = nodeAt(t, pos - 1), *r = l->ch[1];",
             "\tif (r) l->ch[1] = r->p = 0;",
             "\treturn {update(l), update(r)};",
@@ -507,6 +538,7 @@
     },
     "template.cpp": {
         "body": [
+            "#define all(x) begin(x), end(x)",
             "using namespace std;",
             "",
             "using ll = long long;",
