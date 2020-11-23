@@ -76,6 +76,7 @@
             "// first is everything < pos, second is >= pos",
             "pair<node*, node*> split(node* t, int pos) {",
             "\tif (pos <= 0 || !t) return {0, t};",
+            "\tif (pos > cnt(t)) return {t, 0};",
             "\tnode *l = nodeAt(t, pos - 1), *r = l->ch[1];",
             "\tif (r) l->ch[1] = r->p = 0;",
             "\treturn {update(l), update(r)};",
