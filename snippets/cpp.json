@@ -76,7 +76,7 @@
             "\tbool same(int a, int b) { return find(a) == find(b); }",
             "};"
         ],
-        "description": "Maintains union of disjoint sets, and can\nrevert to previous states. Time: $O(\\log{n})$ queries and\nunions, $O(\\delta time)$ for restoring.",
+        "description": "Maintains union of disjoint sets, and can\nrevert to previous states.",
         "prefix": [
             "hack_DSURestorable"
         ]
