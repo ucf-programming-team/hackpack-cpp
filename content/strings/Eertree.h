@@ -1,10 +1,10 @@
 const int A = 26;
-struct eertree {
+struct Eertree {
   vector<int> s, len, link, slink, diff;
   vector<vector<int>> dfa;
   int size, last, n;
-  eertree() {}
-  eertree(int N):
+  Eertree() {}
+  Eertree(int N):
     n(0), last(0), s(N + 2), len(N + 2), link(N + 2),
     slink(N + 2), diff(N + 2), dfa(A, vector<int>(N + 2)) {
     s[n++] = len[1] = -1;
