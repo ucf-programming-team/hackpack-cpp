@@ -1,6 +1,7 @@
 /**
  * Description: Maintains union of disjoint sets, and can
- * revert to previous states. Time: $O(\log{n})$ queries and
+ * revert to previous states.
+ * Time: $O(\log{n})$ queries and
  * unions, $O(\delta time)$ for restoring.
  */
 
