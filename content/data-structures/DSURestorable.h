@@ -8,7 +8,7 @@
 struct RestorableDSU {
   vector<int> s;
   stack<pair<int, int>> stk;
-  RestorableDSU(int n) : s(n, -1) {}
+  RestorableDSU(int n): s(n, -1) {}
   int find(int i) { return s[i] < 0 ? i : find(s[i]); }
   bool join(int a, int b) {
     a = find(a), b = find(b);
