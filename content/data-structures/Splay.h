@@ -10,8 +10,8 @@ struct node {
   node *ch[2] = {0}, *p = 0;
   int cnt = 1, val;
 
-  node(int val, node* l = 0, node* r = 0)
-    : ch{l, r}, val(val) {}
+  node(int val, node* l = 0, node* r = 0):
+    ch{l, r}, val(val) {}
 };
 
 int cnt(node* x) { return x ? x->cnt : 0; }

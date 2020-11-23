@@ -5,7 +5,7 @@
 
 struct DSU {
   vector<int> s;
-  DSU(int n) : s(n, -1) {}
+  DSU(int n): s(n, -1) {}
   int find(int i) { return s[i] < 0 ? i : s[i] = find(s[i]); }
   bool join(int a, int b) {
     a = find(a), b = find(b);

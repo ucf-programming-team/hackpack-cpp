@@ -9,7 +9,7 @@ using ll = long long;
 
 struct Weight {
   ll d, it;
-  Weight(ll d = 0, ll it = 0) : d(d), it(it) {}
+  Weight(ll d = 0, ll it = 0): d(d), it(it) {}
   Weight operator+(const Weight& o) const {
     return {d + o.d, it + o.it};
   }
