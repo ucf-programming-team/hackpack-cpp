@@ -7,7 +7,7 @@ template <typename T, class Compare = less<T>>
 struct RMQ {
   vector<vector<T>> t;
   Compare cmp;
-  RMQ(vector<T>& a) : t(__lg(a.size()) + 1, a) {
+  RMQ(vector<T>& a): t(__lg(a.size()) + 1, a) {
     int n = a.size(), lg = __lg(n);
     for (int k = 1, len = 1; k <= lg; k++, len <<= 1)
       for (int i = 0; i + 2 * len - 1 < n; i++)

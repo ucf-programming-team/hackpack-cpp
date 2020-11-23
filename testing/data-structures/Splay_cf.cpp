@@ -16,8 +16,8 @@ struct node {
   int cnt = 1, val;
   bool flip = 0;
 
-  node(int val, node* l = 0, node* r = 0)
-    : val(val), ch{l, r} {}
+  node(int val, node* l = 0, node* r = 0):
+    val(val), ch{l, r} {}
 };
 
 int cnt(node* x) { return x ? x->cnt : 0; }

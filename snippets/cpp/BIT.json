@@ -5,7 +5,7 @@
             "struct BIT {",
             "\tvector<T> s;",
             "\tint n;",
-            "\tBIT(int n) : s(n + 1), n(n) {}",
+            "\tBIT(int n): s(n + 1), n(n) {}",
             "\tvoid update(int i, T v) {",
             "\t\tfor (i++; i <= n; i += i & -i) s[i] += v;",
             "\t}",
