@@ -9,21 +9,18 @@
 
 struct LCA {
   int T = 0;
-  vector<int> pre, path, times;
+  vector<int> pre, inv, tour;
   RMQ<int> rmq;
-  LCA(vector<vector<int>>& adj, int root = 0)
-    : pre(adj.size()), rmq((dfs(root, -1, adj), times)) {}
-  void dfs(int u, int p, vector<vector<int>>& adj) {
-    pre[u] = T++;
+  LCA(vector<vector<int>>& adj, int root = 0):
+    pre(size(adj)), inv(pre), rmq((dfs(adj, root), tour)) {}
+  void dfs(vector<vector<int>>& adj, int u, int p = -1) {
+    inv[pre[u] = T++] = u;
     for (int v : adj[u])
-      if (v != p) {
-        path.push_back(u), times.push_back(pre[u]);
-        dfs(v, u, adj);
-      }
+      if (v != p) tour.push_back(pre[u]), dfs(adj, v, u);
   }
   int lca(int u, int v) {
     if (u == v) return u;
     tie(u, v) = minmax(pre[u], pre[v]);
-    return path[rmq.query(u, v - 1)];
+    return inv[rmq.query(u, v - 1)];
   }
 };
