@@ -17,7 +17,7 @@ struct Dinic {
   vector<int> lvl, q, blk;
   vector<vector<Edge>> adj;
   vector<pair<int, int>> edges;
-  Dinic(int n) : n(n + 2), s(n++), t(n++), q(n), adj(n) {}
+  Dinic(int n): n(n + 2), s(n++), t(n++), q(n), adj(n) {}
   int add(int u, int v, ll cap, ll flow = 0) {
     adj[u].push_back({v, int(adj[v].size()), cap, cap - flow});
     adj[v].push_back({u, int(adj[u].size()) - 1, 0, 0});
