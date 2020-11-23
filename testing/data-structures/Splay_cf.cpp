@@ -1,23 +1,16 @@
+// tested on https://codeforces.com/contest/863/problem/D
 #include <bits/stdc++.h>
 using namespace std;
 
 using ll = long long;
-
-/**
- * Description: An implicit balanced BST. You only need to
- * change \texttt{update()} and \texttt{prop()}. \\
- * If used for link-cut tree, code everything up to
- * \texttt{splay()}. Time: amortized $O(\log n)$ for all
- * operations
- */
 
 struct node {
   node *ch[2] = {0}, *p = 0;
   int cnt = 1, val;
   bool flip = 0;
 
-  node(int val, node* l = 0, node* r = 0)
-    : val(val), ch{l, r} {}
+  node(int val, node* l = 0, node* r = 0):
+    val(val), ch{l, r} {}
 };
 
 int cnt(node* x) { return x ? x->cnt : 0; }

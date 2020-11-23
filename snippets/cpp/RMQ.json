@@ -5,7 +5,7 @@
             "struct RMQ {",
             "\tvector<vector<T>> t;",
             "\tCompare cmp;",
-            "\tRMQ(vector<T>& a) : t(__lg(a.size()) + 1, a) {",
+            "\tRMQ(vector<T>& a): t(__lg(a.size()) + 1, a) {",
             "\t\tint n = a.size(), lg = __lg(n);",
             "\t\tfor (int k = 1, len = 1; k <= lg; k++, len <<= 1)",
             "\t\t\tfor (int i = 0; i + 2 * len - 1 < n; i++)",
