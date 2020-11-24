@@ -7,9 +7,25 @@ on:
     branches: [master]
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install clang-format
+        run: sudo apt-get install clang-format-10
+
+      - name: Validate Formatting
+        run: sh ./doc/scripts/validate-formatting.sh
+
+  create-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    if: ${{ github.event_name == 'push' }} # don't make release on PR
+
+    needs: validate
 
     steps:
       - uses: actions/checkout@v2
@@ -17,15 +33,22 @@ jobs:
       - name: Install pdflatex
         run: sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-extra
 
-      - name: Install clang-format
-        run: sudo apt install clang-format
-
-      - name: Validate Formatting
-        run: sh ./doc/scripts/validate-formatting.sh
-
       - name: Build pdf
         run: make kactl
-    # - name: Run compiles
-    #   run: make test-compiles
-    # - name: Run stress tests
-    #   run: make test
+      
+      - name: Build snippets
+        run: make snippets
+
+      - name: Compress snippets
+        run: zip -r snippets.zip ./snippets
+
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Latest PDF and Snippets"
+          files: |
+            kactl.pdf
+            ./snippets/*.json
+            snippets.zip
