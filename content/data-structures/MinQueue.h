@@ -2,7 +2,7 @@
  * Description: Queue that maintains its minimum element.
  * Time: Amortized $O(1)$ for \texttt{push()},
  * true $O(1)$ for \texttt{pop()}/\texttt{min()}.
- * Usage: Works exactly like std::queue; 
+ * Usage: Works exactly like std::queue;
  * min_queue<T> gives a min queue, and
  * min_queue<T, greater<T>> gives a max queue.
  */
