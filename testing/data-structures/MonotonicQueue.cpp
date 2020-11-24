@@ -5,7 +5,7 @@
 using namespace std;
 using ll = long long;
 
-#include "../../content/data-structures/MinQueue.h"
+#include "../../content/data-structures/MonotonicQueue.h"
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);
@@ -23,7 +23,7 @@ int main() {
   for (int i = 1; i < n - 1; i++) cin >> d[i];
 
   auto go = [&](int r) {
-    min_queue<ll> q;
+    monotonic_queue<ll> q;
     q.push(0);
 
     for (int i = n - 2; i >= 0; i--) {
