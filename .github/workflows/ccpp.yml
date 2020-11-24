@@ -17,9 +17,6 @@ jobs:
       - name: Install clang-format
         run: sudo apt-get install clang-format-10
 
-      - name: Print version for debug
-        run: clang-format-10 --version
-
       - name: Validate Formatting
         run: sh ./doc/scripts/validate-formatting.sh
 

@@ -7,10 +7,7 @@
 
 template <typename T>
 struct BIT {
-  vector<
-  
-  
-  T> s;
+  vector<T> s;
   int n;
   BIT(int n): s(n + 1), n(n) {}
   void update(int i, T v) {
