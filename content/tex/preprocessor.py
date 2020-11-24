@@ -15,6 +15,7 @@ import snippets
 def escape(input):
     input = input.replace('<', r'\ensuremath{<}')
     input = input.replace('>', r'\ensuremath{>}')
+    input = input.replace('\n', ' ')
     return input
 
 def pathescape(input):
