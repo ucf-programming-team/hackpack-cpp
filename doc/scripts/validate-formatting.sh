@@ -5,6 +5,6 @@ find . -type f |
   grep "<replacement " >/dev/null
 if [ $? -ne 1 ]; then
     echo "Commit did not match clang-format"
-    echo "Please run `make format` and recommit"
+    echo "Please run 'make format' and recommit"
     exit 1
 fi
