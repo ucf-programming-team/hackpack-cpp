@@ -2,7 +2,7 @@ name: C/C++ CI
 
 on:
   push:
-    # branches: [master]
+    branches: [master]
   pull_request:
     branches: [master]
 
@@ -23,7 +23,7 @@ jobs:
   create-release:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    # if: ${{ github.event_name == 'push' && github.ref == 'master' }}
+    if: ${{ github.event_name == 'push' }} # don't make release on PR
 
     needs: validate
 
@@ -47,7 +47,7 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
           prerelease: true
-          title: "Latest Build"
+          title: "Latest PDF and Snippets"
           files: |
             kactl.pdf
             ./snippets/*.json
