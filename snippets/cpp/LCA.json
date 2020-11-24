@@ -1,0 +1,30 @@
+{
+    "LCA.h": {
+        "body": [
+            "struct LCA {",
+            "\tint T = 0;",
+            "\tvector<int> pre, path, times;",
+            "\tRMQ<int> rmq;",
+            "\tLCA(vector<vector<int>>& adj, int root = 0)",
+            "\t\t: pre(adj.size()), rmq((dfs(root, -1, adj), times)) {}",
+            "\tvoid dfs(int u, int p, vector<vector<int>>& adj) {",
+            "\t\tpre[u] = T++;",
+            "\t\tfor (int v : adj[u])",
+            "\t\t\tif (v != p) {",
+            "\t\t\t\tpath.push_back(u), times.push_back(pre[u]);",
+            "\t\t\t\tdfs(v, u, adj);",
+            "\t\t\t}",
+            "\t}",
+            "\tint lca(int u, int v) {",
+            "\t\tif (u == v) return u;",
+            "\t\ttie(u, v) = minmax(pre[u], pre[v]);",
+            "\t\treturn path[rmq.query(u, v - 1)];",
+            "\t}",
+            "};"
+        ],
+        "description": "Answers lowest common ancestor\nqueries on a rooted tree using RMQ. Works with\nboth directed and undirected adjacency lists.",
+        "prefix": [
+            "hack_LCA"
+        ]
+    }
+}
