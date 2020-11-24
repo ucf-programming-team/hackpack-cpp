@@ -6,3 +6,6 @@ a.out
 header.tmp
 .vscode
 *.pyc
+snippets/*
+kactl.pdf
+test-session.pdf
