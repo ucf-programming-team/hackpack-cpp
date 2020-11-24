@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install clang-format
-        run: sudo apt install clang-format
+        run: sudo apt-get install clang-format
 
       - name: Validate Formatting
         run: sh ./doc/scripts/validate-formatting.sh
