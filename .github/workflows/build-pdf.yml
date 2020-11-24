@@ -16,7 +16,7 @@ jobs:
         run: sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-extra
 
       - name: Install clang-format
-        run: sudo apt install clang-format
+        run: sudo apt install clang-format-10
 
       - name: Run make format
         run: make format

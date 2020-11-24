@@ -3,7 +3,7 @@
 ## style
 - use only the `#define`s and `typedef`s in the [template](https://github.com/ucf-programming-team/hackpack-cpp/blob/master/content/contest/template.cpp)
 - run the formatter on any code you commit (`make format`)
-    - you may need to install clang-format (`sudo apt install clang-format`)
+    - you may need to install clang-format (`sudo apt install clang-format-10`)
 - name files in upper camel case
 
 ## building PDF
