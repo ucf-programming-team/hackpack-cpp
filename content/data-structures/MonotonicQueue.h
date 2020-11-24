@@ -1,14 +1,14 @@
 /**
- * Description: Queue that maintains its minimum element.
+ * Description: Queue that maintains its minimum/maximum element.
  * Time: Amortized $O(1)$ for \texttt{push()},
  * true $O(1)$ for \texttt{pop()}/\texttt{min()}.
  * Usage: Works exactly like std::queue;
- * min_queue<T> gives a min queue, and
- * min_queue<T, greater<T>> gives a max queue.
+ * monotonic_queue<T> gives a min queue, and
+ * monotonic_queue<T, greater<T>> gives a max queue.
  */
 
 template <typename T, class Compare = less<T>>
-struct min_queue : queue<T> {
+struct monotonic_queue : queue<T> {
   using q = queue<T>;
   deque<T> mq;
   Compare cmp;
