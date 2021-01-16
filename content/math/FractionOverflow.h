@@ -17,7 +17,7 @@ struct QO {
   T gcd(T x, T y) const { return __gcd(x, y); }
   QO operator+(const QO& o) const {
     T g = gcd(b, o.b), bb = b / g, obb = o.b / g;
-    return {a * obb + o.a * bb, o.b * obb};
+    return {a * obb + o.a * bb, b * obb};
   }
   QO operator-(const QO& o) const {
     return *this + QO(-o.a, o.b);
