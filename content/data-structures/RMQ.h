@@ -4,11 +4,12 @@
  * queries. Status: Tested
  */
 
-template <typename T, class Compare = less<T>>
+template <typename T, class C = less<T>>
 struct RMQ {
   vector<vector<T>> t;
-  Compare cmp;
-  RMQ(vector<T>& a): t(__lg(a.size()) + 1, a) {
+  C cmp;
+  RMQ(vector<T>& a, C cmp = C{}):
+    t(__lg(a.size()) + 1, a), cmp(cmp) {
     int n = a.size(), lg = __lg(n);
     for (int k = 1, len = 1; k <= lg; k++, len <<= 1)
       for (int i = 0; i + 2 * len - 1 < n; i++)
