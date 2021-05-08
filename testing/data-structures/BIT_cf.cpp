@@ -1,4 +1,4 @@
-// tested on https://open.kattis.com/problems/fenwick
+// tested on https://codeforces.com/contest/1354/problem/D
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -28,8 +28,8 @@ int main() {
     if (i > 0)
       bit.update(i, 1);
     else
-      bit.update(bit.kth(-i), -1);
+      bit.update(bit.kth(-i - 1), -1);
   }
 
-  cout << (bit.query(n) ? bit.kth(1) : 0) << '\n';
+  cout << (bit.query(n) ? bit.kth(0) : 0) << '\n';
 }

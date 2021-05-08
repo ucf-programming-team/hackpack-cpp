@@ -1,6 +1,6 @@
 /**
  * Description: Query [l, r] sums, and point updates.
- * kth() returns the smallest index i s.t. query(0, i) >= k
+ * kth() returns the smallest index i s.t. query(i) > k
  * Time: $O(\log n)$ for all ops.
  * Status: Tested
  */
@@ -19,11 +19,11 @@ struct BIT {
     return ans;
   }
   T query(int l, int r) { return query(r) - query(l - 1); }
-  int kth(T k) { // returns n if k > sum of tree
-    if (k <= 0) return -1;
+  int kth(T k) { // 0-indexed, returns n if k > sum of tree
+    if (k < 0) return -1;
     int i = 0;
     for (int pw = 1 << __lg(n); pw; pw >>= 1)
-      if (i + pw <= n && s[i + pw] < k) k -= s[i += pw];
+      if (i + pw <= n && s[i + pw] <= k) k -= s[i += pw];
     return i;
   }
 };
