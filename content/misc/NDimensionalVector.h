@@ -6,9 +6,9 @@
  */
 
 template <int D, class T> struct Vec : vector<Vec<D - 1, T>> {
-  template <typename... Args> Vec(int n = 0, Args... args):
+  template <class... Args> Vec(int n = 0, Args... args):
     vector<Vec<D - 1, T>>(n, Vec<D - 1, T>(args...)) {}
 };
-template <typename T> struct Vec<1, T> : vector<T> {
+template <class T> struct Vec<1, T> : vector<T> {
   Vec(int n = 0, const T& val = T()): vector<T>(n, val) {}
 };
