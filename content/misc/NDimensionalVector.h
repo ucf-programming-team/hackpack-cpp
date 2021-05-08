@@ -5,7 +5,7 @@
  * double b[n][m][k] initialized with 3.14
  */
 
-template <int D, typename T>
+template <int D, class T>
 struct Vec : public vector<Vec<D - 1, T>> {
   static_assert(D >= 1,
                 "Vector dimension must be greater than zero!");

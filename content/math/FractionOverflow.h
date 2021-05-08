@@ -5,7 +5,7 @@
  * $O(\log N)$.
  */
 
-template <typename T>
+template <class T>
 struct QO {
   T a, b;
   QO(T p, T q = 1) {

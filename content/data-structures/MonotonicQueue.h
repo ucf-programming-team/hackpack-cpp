@@ -8,7 +8,7 @@
  * and monotonic_queue<T, greater<T>> gives a max queue.
  */
 
-template <typename T, class Compare = less<T>>
+template <class T, class Compare = less<T>>
 struct monotonic_queue : queue<T> {
   using q = queue<T>;
   deque<T> mq;

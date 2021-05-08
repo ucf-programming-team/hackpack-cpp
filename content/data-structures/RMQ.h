@@ -4,7 +4,7 @@
  * queries. Status: Tested
  */
 
-template <typename T, class C = less<T>>
+template <class T, class C = less<T>>
 struct RMQ {
   vector<vector<T>> t;
   C cmp;

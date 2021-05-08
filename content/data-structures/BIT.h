@@ -5,7 +5,7 @@
  * Status: Tested
  */
 
-template <typename T>
+template <class T>
 struct BIT {
   vector<T> s;
   int n;
