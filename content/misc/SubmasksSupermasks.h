@@ -1,5 +1,5 @@
-/** Description: Iterate over all masks and their submasks in
- * O(3^n)
+/** Description: Iterate over all masks and 
+ * their submasks in O(3^n).
  */
 
 void submasks(int n) {
