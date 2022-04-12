@@ -1,0 +1,29 @@
+\subsection{Multiplicative Functions}
+A function $f : \mathbb{N} \to \mathbb{C}$ is multiplicative if
+$f(ab) = f(a)f(b)$ when $a, b$ are coprime.
+Common multiplicative functions:
+\begin{itemize}
+    \item Unit function: $\epsilon(n) = [n = 1]$
+    \item Constant function: $1(n) = 1$
+    \item Identity function: $\mathrm{Id}(n) = n$
+    \item Power function: $\mathrm{Id}_a(n) = n^a$
+    \item Divisor function $\sigma_a(p^k) = \frac{p^{a(k+1)} - 1}{p^a - 1}$
+    \item Möbius function $\mu(p^k) = [k = 0] - [k = 1]$
+    \item Euler's totient function $\phi(p^k) = p^k - p^{k-1}$
+\end{itemize}
+Dirichlet convolution of multiplicative functions $f$ and $g$ is multiplicative,
+\[ (f*g)(n) = \sum_{d \mid n} f(d) g\left(\frac{n}{d}\right) \]
+\begin{itemize}
+    \item $1 * \mu = \epsilon$
+    \item $g = f * 1$ iff $f = g * \mu$
+    \item $\sigma_k = \mathrm{Id}_k * 1$
+    \item $\sigma_0 = d = 1 * 1$
+    \item $\phi * 1 = \mathrm{Id}$
+    \item $\phi^k * 1 = \mathrm{Id}_k$
+    \item $\sigma = \phi * d$
+    \item $d^3 * 1 = (d * 1)^2$
+    \item $\pi(x) = \sum_{n \leq x} (\omega * \mu)(n)$, $\pi = $ prime counting function, $\omega = $ num. of prime factors  
+\end{itemize}
+\subsection{Möbius Inversion Formula}
+    If for any two functions $f, g : \mathbb{N} \to \mathbb{C}$, $g(n) = \sum_{d \mid n} f(n)$,
+    \[ f(n) = (\mu * g)(n) = \sum_{d \mid n} \mu(d) g \left(\frac{n}{d}\right) \]
