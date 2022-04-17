@@ -1,5 +1,6 @@
 //TEST=https://judge.yosupo.jp/problem/lca
-#include "../content/graphs/TreeLifting.h"
+#include "testing/tester.h"
+#include "content/graphs/TreeLifting.h"
 
 void test() {
   int n, q;
