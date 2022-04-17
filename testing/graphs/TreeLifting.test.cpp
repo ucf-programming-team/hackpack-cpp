@@ -1,4 +1,4 @@
-//TEST=https://judge.yosupo.jp/problem/lca
+#define PROBLEM "https://judge.yosupo.jp/problem/lca"
 #include "testing/tester.h"
 #include "content/graphs/TreeLifting.h"
 
