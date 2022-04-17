@@ -1,3 +1,5 @@
+// This file is the driver for all of the .test.cpp files in tests/, 
+// for use with the verifier CI. 
 #include <bits/stdc++.h>
 using namespace std;
 #define sz(x) int(size(x))

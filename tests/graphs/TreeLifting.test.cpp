@@ -1,5 +1,5 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/lca"
-#include "testing/tester.h"
+#include "tests/TestRunner.h"
 #include "content/graphs/TreeLifting.h"
 
 void test() {
