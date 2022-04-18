@@ -1,3 +1,7 @@
 {
-"tests/graphs/TreeLifting.test.cpp": "2022-04-17 18:34:03 -0400"
+"tests/data-structures/BIT.test.cpp": "2022-04-17 21:59:49 -0400",
+"tests/data-structures/DSU.test.cpp": "2022-04-17 22:31:52 -0400",
+"tests/data-structures/RMQ.test.cpp": "2022-04-17 22:37:03 -0400",
+"tests/data-structures/RMQLambda.test.cpp": "2022-04-17 22:37:03 -0400",
+"tests/graphs/TreeLifting.test.cpp": "2022-04-17 21:59:49 -0400"
 }
