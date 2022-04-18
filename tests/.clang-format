@@ -1,3 +1,4 @@
+# different style format for tests, 
 ---
 Language: Cpp
 BasedOnStyle: Google
@@ -30,7 +31,7 @@ BreakBeforeTernaryOperators: true
 BreakConstructorInitializers: AfterColon
 BreakInheritanceList: AfterColon
 BreakStringLiterals: true
-ColumnLimit: 63
+ColumnLimit: 100
 CommentPragmas: '^\*'
 CompactNamespaces: true
 ConstructorInitializerAllOnOneLineOrOnePerLine: false
@@ -48,7 +49,7 @@ IndentWidth: 2
 IndentWrappedFunctionNames: false
 InsertTrailingCommas: None
 KeepEmptyLinesAtTheStartOfBlocks: false
-MaxEmptyLinesToKeep: 0
+MaxEmptyLinesToKeep: 1
 NamespaceIndentation: None
 PenaltyBreakAssignment: 1
 PenaltyBreakBeforeFirstCallParameter: 1

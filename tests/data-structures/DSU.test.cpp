@@ -3,16 +3,17 @@
 #include "../../content/data-structures/DSU.h"
 
 void test() {
-  int n, q;
-  cin >> n >> q;
-  
-  DSU dsu(n);
+	int n, q;
+	cin >> n >> q;
 
-  while (q--) {
-    int t, x, y;
-    cin >> t >> x >> y;
+	DSU dsu(n);
 
-    if (t == 0) dsu.join(x, y);
-    else cout << dsu.same(x, y) << "\n";
-  }
+	while (q--) {
+		int t, x, y;
+		cin >> t >> x >> y;
+
+		if (t == 0) dsu.join(x, y);
+		else
+			cout << dsu.same(x, y) << "\n";
+	}
 }

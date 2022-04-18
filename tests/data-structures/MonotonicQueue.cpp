@@ -8,41 +8,40 @@ using ll = long long;
 #include "../../content/data-structures/MonotonicQueue.h"
 
 int main() {
-  cin.tie(0)->sync_with_stdio(0);
-  cin.exceptions(cin.failbit);
-  freopen("journey.in", "r", stdin);
-  freopen("journey.out", "w", stdout);
+	cin.tie(0)->sync_with_stdio(0);
+	cin.exceptions(cin.failbit);
+	freopen("journey.in", "r", stdin);
+	freopen("journey.out", "w", stdout);
 
-  int n;
-  ll t;
-  cin >> n >> t;
+	int n;
+	ll t;
+	cin >> n >> t;
 
-  vector<ll> p(n), d(n);
+	vector<ll> p(n), d(n);
 
-  for (int i = 1; i < n; i++) cin >> p[i];
-  for (int i = 1; i < n - 1; i++) cin >> d[i];
+	for (int i = 1; i < n; i++) cin >> p[i];
+	for (int i = 1; i < n - 1; i++) cin >> d[i];
 
-  auto go = [&](int r) {
-    monotonic_queue<ll> q;
-    q.push(0);
+	auto go = [&](int r) {
+		monotonic_queue<ll> q;
+		q.push(0);
 
-    for (int i = n - 2; i >= 0; i--) {
-      q.push(d[i] + q.min());
-      while (q.size() > r) q.pop();
-    }
+		for (int i = n - 2; i >= 0; i--) {
+			q.push(d[i] + q.min());
+			while (q.size() > r) q.pop();
+		}
 
-    return q.back() + n - 1;
-  };
+		return q.back() + n - 1;
+	};
 
-  int lo = 1, hi = n - 1;
-  while (lo < hi) {
-    int mid = (lo + hi) / 2;
+	int lo = 1, hi = n - 1;
+	while (lo < hi) {
+		int mid = (lo + hi) / 2;
 
-    if (go(mid) <= t)
-      hi = mid;
-    else
-      lo = mid + 1;
-  }
+		if (go(mid) <= t) hi = mid;
+		else
+			lo = mid + 1;
+	}
 
-  cout << *min_element(p.begin() + hi, p.end()) << '\n';
+	cout << *min_element(p.begin() + hi, p.end()) << '\n';
 }

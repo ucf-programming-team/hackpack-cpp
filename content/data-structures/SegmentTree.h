@@ -8,13 +8,13 @@
  * Status: stress-tested
  */
 #pragma once
-
 struct Tree {
 	typedef int T;
 	static constexpr T unit = INT_MIN;
 	T f(T a, T b) { return max(a, b); } // (any associative fn)
-	vector<T> s; int n;
-	Tree(int n = 0, T def = unit) : s(2*n, def), n(n) {}
+	vector<T> s;
+	int n;
+	Tree(int n = 0, T def = unit): s(2 * n, def), n(n) {}
 	void update(int pos, T val) {
 		for (s[pos += n] = val; pos /= 2;)
 			s[pos] = f(s[pos * 2], s[pos * 2 + 1]);

@@ -3,21 +3,22 @@
 #include "../../content/data-structures/BIT.h"
 
 void test() {
-  int n, q;
-  cin >> n >> q;
+	int n, q;
+	cin >> n >> q;
 
-  BIT<ll> bit(n);
-  for (int i = 0; i < n; i++) {
-    int x;
-    cin >> x;
-    bit.update(i, x);
-  }
-  
-  while (q--) {
-    int t, x, y;
-    cin >> t >> x >> y;
+	BIT<ll> bit(n);
+	for (int i = 0; i < n; i++) {
+		int x;
+		cin >> x;
+		bit.update(i, x);
+	}
 
-    if (t == 0) bit.update(x, y);
-    else cout << bit.query(x, y-1) << "\n";
-  }
+	while (q--) {
+		int t, x, y;
+		cin >> t >> x >> y;
+
+		if (t == 0) bit.update(x, y);
+		else
+			cout << bit.query(x, y - 1) << "\n";
+	}
 }
