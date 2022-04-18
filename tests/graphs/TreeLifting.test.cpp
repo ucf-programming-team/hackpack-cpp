@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/lca"
-#include "tests/TestRunner.h"
-#include "content/graphs/TreeLifting.h"
+#include "../../tests/TestRunner.h"
+#include "../../content/graphs/TreeLifting.h"
 
 void test() {
   int n, q;

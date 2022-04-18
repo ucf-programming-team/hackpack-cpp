@@ -12,10 +12,10 @@ using pii = pair<int, int>;
 void test();
 
 int main() {
-    cin.tie(0)->sync_with_stdio(0);
-    cin.exceptions(cin.failbit);
+  cin.tie(0)->sync_with_stdio(0);
+  cin.exceptions(cin.failbit);
 
-    test();
+  test();
 
-    return 0;
+  return 0;
 }
