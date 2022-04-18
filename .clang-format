@@ -1,66 +1,56 @@
 ---
-Language:        Cpp
-BasedOnStyle:  Google
+Language: Cpp
+BasedOnStyle: Google
 AccessModifierOffset: -2
 AlignAfterOpenBracket: Align
 AlignConsecutiveAssignments: false
-AlignConsecutiveDeclarations: false
-AlignEscapedNewlinesLeft: true
-AlignOperands:   true
-AlignTrailingComments: true
-AllowAllParametersOfDeclarationOnNextLine: true
-AllowShortBlocksOnASingleLine: true
+AlignConsecutiveBitFields: None
+AlignConsecutiveDeclarations: None
+AlignConsecutiveMacros: None
+AlignOperands: DontAlign
+AlignTrailingComments: false
+AllowShortBlocksOnASingleLine: Always
 AllowShortCaseLabelsOnASingleLine: true
+AllowShortEnumsOnASingleLine: true
 AllowShortFunctionsOnASingleLine: All
-AllowShortIfStatementsOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: Always
+AllowShortLambdasOnASingleLine: All
 AllowShortLoopsOnASingleLine: true
-AlwaysBreakAfterDefinitionReturnType: None
 AlwaysBreakAfterReturnType: None
-AlwaysBreakBeforeMultilineStrings: true
-AlwaysBreakTemplateDeclarations: true
+AlwaysBreakBeforeMultilineStrings: false
+AlwaysBreakTemplateDeclarations: MultiLine
+AttributeMacros: []
 BinPackArguments: true
 BinPackParameters: true
-BraceWrapping:
-  AfterClass:      false
-  AfterControlStatement: false
-  AfterEnum:       false
-  AfterFunction:   false
-  AfterNamespace:  false
-  AfterObjCDeclaration: false
-  AfterStruct:     false
-  AfterUnion:      false
-  BeforeCatch:     false
-  BeforeElse:      false
-  IndentBraces:    false
-BreakBeforeBinaryOperators: None
+BitFieldColonSpacing: Both
+BreakBeforeBinaryOperators: NonAssignment
 BreakBeforeBraces: Attach
+BreakBeforeConceptDeclarations: false
 BreakBeforeTernaryOperators: true
-BreakConstructorInitializersBeforeComma: false
-ColumnLimit:     63
-CommentPragmas:  '^ IWYU pragma:'
-ConstructorInitializerAllOnOneLineOrOnePerLine: true
+BreakConstructorInitializers: AfterColon
+BreakInheritanceList: AfterColon
+BreakStringLiterals: true
+ColumnLimit: 63
+CommentPragmas: '^\*'
+CompactNamespaces: true
+ConstructorInitializerAllOnOneLineOrOnePerLine: false
 ConstructorInitializerIndentWidth: 2
-ContinuationIndentWidth: 1
+ContinuationIndentWidth: 2
 Cpp11BracedListStyle: true
-DerivePointerAlignment: false
-DisableFormat:   false
-ExperimentalAutoDetectBinPacking: false
-ForEachMacros:   [ ]
-IncludeCategories:
-  - Regex:           '^<.*\.h>'
-    Priority:        1
-  - Regex:           '^<.*'
-    Priority:        2
-  - Regex:           '.*'
-    Priority:        3
-IndentCaseLabels: true
-IndentWidth:     2
+DerivePointerAlignment: true
+FixNamespaceComments: false
+ForEachMacros: []
+IncludeBlocks: Regroup
+IndentCaseBlocks: false
+IndentCaseLabels: false
+IndentGotoLabels: false
+IndentWidth: 2
 IndentWrappedFunctionNames: false
+InsertTrailingCommas: None
 KeepEmptyLinesAtTheStartOfBlocks: false
-MacroBlockBegin: ''
-MacroBlockEnd:   ''
 MaxEmptyLinesToKeep: 1
-NamespaceIndentation: All
+NamespaceIndentation: None
+PenaltyBreakAssignment: 1
 PenaltyBreakBeforeFirstCallParameter: 1
 PenaltyBreakComment: 300
 PenaltyBreakFirstLessLess: 120
@@ -68,23 +58,30 @@ PenaltyBreakString: 1000
 PenaltyExcessCharacter: 1000000
 PenaltyReturnTypeOnItsOwnLine: 200
 PointerAlignment: Left
-ReflowComments:  true
-SortIncludes:    true
+ReflowComments: false
+SortIncludes: true
+SortUsingDeclarations: false
 SpaceAfterCStyleCast: false
+SpaceAfterLogicalNot: false
+SpaceAfterTemplateKeyword: false
+SpaceAroundPointerQualifiers: Default
 SpaceBeforeAssignmentOperators: true
+SpaceBeforeCaseColon: false
+SpaceBeforeCpp11BracedList: false
+SpaceBeforeCtorInitializerColon: false
+SpaceBeforeInheritanceColon: false
 SpaceBeforeParens: ControlStatements
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceBeforeSquareBrackets: false
+SpaceInEmptyBlock: false
 SpaceInEmptyParentheses: false
 SpacesBeforeTrailingComments: 1
-SpacesInAngles:  false
-SpacesInContainerLiterals: true
-SpacesInCStyleCastParentheses: true
+SpacesInAngles: false
+SpacesInCStyleCastParentheses: false
+SpacesInContainerLiterals: false
 SpacesInParentheses: false
 SpacesInSquareBrackets: false
-Standard:        Auto
-TabWidth:        2
-UseTab:          Never
-ConstructorInitializerAllOnOneLineOrOnePerLine: false
-SpaceBeforeCtorInitializerColon: false
-BreakConstructorInitializers: AfterColon
+Standard: c++17
+TabWidth: 2
+UseTab: Never
 ...
-
