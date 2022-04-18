@@ -48,7 +48,7 @@ IndentWidth: 2
 IndentWrappedFunctionNames: false
 InsertTrailingCommas: None
 KeepEmptyLinesAtTheStartOfBlocks: false
-MaxEmptyLinesToKeep: 1
+MaxEmptyLinesToKeep: 0
 NamespaceIndentation: None
 PenaltyBreakAssignment: 1
 PenaltyBreakBeforeFirstCallParameter: 1
