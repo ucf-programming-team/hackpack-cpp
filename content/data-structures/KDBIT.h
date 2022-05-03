@@ -1,10 +1,8 @@
 /**
  * Description: $k$-dimensional BIT. \texttt{BIT<int, N, M>}
- * gives an $N \times M$ BIT.
- * Query: \texttt{bit.query(x1, x2, y1, y2)} 
- * Update: \texttt{bit.update(x, y, delta)} 
- * Time: $O(\log^k n)$ Status:
- * Tested
+ * gives an $N \times M$ BIT. Query \texttt{bit.query(x1, x2, y1, y2)} Update \texttt{bit.update(x, y, delta)} 
+ * Time: $O(\log^k n)$ 
+ * Status: Tested
  */
 template<class T, int... Ns> struct BIT {
 	T val = 0;
