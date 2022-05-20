@@ -34,7 +34,6 @@ Node *merge(Node *a, Node *b) {
 	return a;
 }
 void pop(Node*& a) { a->prop(); a = merge(a->l, a->r); }
-
 pair<ll, vi> dmst(int n, int r, vector<Edge>& g) {
 	RollbackUF uf(n);
 	vector<Node*> heap(n);
@@ -63,7 +62,6 @@ pair<ll, vi> dmst(int n, int r, vector<Edge>& g) {
 		}
 		rep(i,0,qi) in[uf.find(Q[i].b)] = Q[i];
 	}
-
 	for (auto& [u,t,comp] : cycs) { // restore sol (optional)
 		uf.rollback(t);
 		Edge inEdge = in[u];

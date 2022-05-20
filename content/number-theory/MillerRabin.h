@@ -25,5 +25,3 @@ bool isPrime(ull n) {
 	return 1;
 
 }
-
-

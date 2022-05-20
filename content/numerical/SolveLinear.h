@@ -16,7 +16,6 @@ int solveLinear(vector<vd>& A, vd& b, vd& x) {
 	int n = sz(A), m = sz(x), rank = 0, br, bc;
 	if (n) assert(sz(A[0]) == m);
 	vi col(m); iota(all(col), 0);
-
 	rep(i,0,n) {
 		double v, bv = 0;
 		rep(r,i,n) rep(c,i,m)
@@ -38,7 +37,6 @@ int solveLinear(vector<vd>& A, vd& b, vd& x) {
 		}
 		rank++;
 	}
-
 	x.assign(m, 0);
 	for (int i = rank; i--;) {
 		b[i] /= A[i][i];

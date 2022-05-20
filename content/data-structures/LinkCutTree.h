@@ -19,15 +19,13 @@ struct LinkCut: SplayTree {
 		push(x);
 	}
 	void Link(int u, int v) {
-		reroot(u);
-		access(v);
+		reroot(u), access(v);
 		T[v].vir += T[u].sub;
 		T[u].p = v;
 		pull(v);
 	}
 	void Cut(int u, int v) {
-		reroot(u);
-		access(v);
+		reroot(u), access(v);
 		T[v].ch[0] = T[u].p = 0;
 		pull(v);
 	}
@@ -39,19 +37,17 @@ struct LinkCut: SplayTree {
 		return T[u].p ? ret : 0;
 	}
 	// Query subtree of u where v is outside the subtree.
-	long long Subtree(int u, int v) {
-		reroot(v);
-		access(u);
+	ll Subtree(int u, int v) {
+		reroot(v), access(u);
 		return T[u].vir + T[u].self;
 	}
 	// Query path [u..v]
-	long long Path(int u, int v) {
-		reroot(u);
-		access(v);
+	ll Path(int u, int v) {
+		reroot(u), access(v);
 		return T[v].path;
 	}
 	// Update vertex u with value v
-	void Update(int u, long long v) {
+	void Update(int u, ll v) {
 		access(u);
 		T[u].self = v;
 		pull(u);
