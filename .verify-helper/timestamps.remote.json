@@ -4,5 +4,6 @@
 "tests/data-structures/DSURestorable.test.cpp": "2022-04-17 23:48:10 -0400",
 "tests/data-structures/RMQ.test.cpp": "2022-04-17 23:48:10 -0400",
 "tests/data-structures/RMQLambda.test.cpp": "2022-04-17 23:48:10 -0400",
-"tests/graphs/TreeLifting.test.cpp": "2022-04-17 23:48:10 -0400"
+"tests/graphs/TreeLiftingKth.test.cpp": "2022-09-02 15:15:10 -0400",
+"tests/graphs/TreeLiftingLCA.test.cpp": "2022-09-02 15:15:10 -0400"
 }
