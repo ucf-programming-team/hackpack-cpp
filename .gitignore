@@ -9,3 +9,4 @@ header.tmp
 /snippets/
 kactl.pdf
 test-session.pdf
+*.gch

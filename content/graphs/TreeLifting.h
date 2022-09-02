@@ -16,10 +16,8 @@ struct lift {
   lift(vector<vi>& adj): d(sz(adj)), p(d), j(d) { dfs(0, adj); }
   void dfs(int u, vector<vi>& adj) {
     int jmp = (d[u] + d[j[j[u]]] == 2*d[j[u]]) ? j[j[u]] : u;
-    for (int v : adj[u]) if (v != p[u]) {
-      d[v] = d[p[v] = u] + 1, j[v] = jmp;
-      dfs(v, adj);
-    }
+    for (int v : adj[u]) if (v != p[u]) 
+      d[v] = d[p[v] = u] + 1, j[v] = jmp, dfs(v, adj);
   }
   int lca(int u, int v) {
     if (d[u] < d[v]) swap(u, v);
