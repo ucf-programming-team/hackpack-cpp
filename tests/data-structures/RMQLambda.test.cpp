@@ -17,6 +17,6 @@ void test() {
 	while (q--) {
 		int x, y;
 		cin >> x >> y;
-		cout << a[rmq.query(x, y - 1)] << "\n";
+		cout << a[rmq.query(x, y)] << "\n";
 	}
 }
