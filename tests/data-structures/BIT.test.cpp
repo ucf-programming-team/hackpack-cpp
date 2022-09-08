@@ -19,6 +19,6 @@ void test() {
 
 		if (t == 0) bit.update(x, y);
 		else
-			cout << bit.query(x, y - 1) << "\n";
+			cout << bit.query(x, y) << "\n";
 	}
 }

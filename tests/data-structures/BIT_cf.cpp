@@ -30,5 +30,5 @@ int main() {
 			bit.update(bit.kth(-i - 1), -1);
 	}
 
-	cout << (bit.query(n) ? bit.kth(0) : 0) << '\n';
+	cout << (bit.query(n + 1) ? bit.kth(0) : 0) << '\n';
 }

@@ -1,6 +1,7 @@
 /**
- * Description: Query [l, r] sums, and point updates.
- * kth() returns the smallest index i s.t. query(i) > k
+ * Description: Query [0, i) and [l, r) sums, and point updates.
+ * kth() returns the smallest index i s.t. query(i) > k.
+ * Right endpoint is exclusive.
  * Time: $O(\log n)$ for all ops.
  * Status: Tested
  */
@@ -11,12 +12,12 @@ template<class T> struct BIT {
 	void update(int i, T v) {
 		for (i++; i <= n; i += i & -i) s[i] += v;
 	}
-	T query(int i) {
+	T query(int i) { // EXCLUSIVE interval [0, i)
 		T ans = 0;
-		for (i++; i; i -= i & -i) ans += s[i];
+		for (; i; i -= i & -i) ans += s[i];
 		return ans;
-	}
-	T query(int l, int r) { return query(r) - query(l - 1); }
+	} // INCLUSIVE-EXCLUSIVE interval [l, r)
+	T query(int l, int r) { return query(r) - query(l); }
 	int kth(T k) { // 0-indexed, returns n if k > sum of tree
 		if (k < 0) return -1;
 		int i = 0;
