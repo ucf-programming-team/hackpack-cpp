@@ -4,7 +4,7 @@
  * Uses cross multiplication.
  */
 
-template <typename T>
+template <class T>
 struct Q {
   T a, b;
   Q(T p, T q = 1) {

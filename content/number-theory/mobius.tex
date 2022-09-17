@@ -1,0 +1,24 @@
+\subsection{Multiplicative Functions}
+A function $f : \mathbb{N} \to \mathbb{C}$ is multiplicative if
+$f(ab) = f(a)f(b)$ when $a, b$ are coprime.
+Common multiplicative functions: \\
+Unit function: $\epsilon(n) = [n = 1]$ \\
+Constant function: $1(n) = 1$ \\ 
+Identity function: $\mathrm{Id}(n) = n$ \\
+Power function: $\mathrm{Id}_a(n) = n^a$ \\
+Divisor function $\sigma_a(p^k) = \frac{p^{a(k+1)} - 1}{p^a - 1}$ \\
+Möbius function $\mu(p^k) = [k = 0] - [k = 1]$ \\
+Euler's totient function $\phi(p^k) = p^k - p^{k-1}$ \\
+Dirichlet convolution of multiplicative functions $f$ and $g$ is multiplicative,
+\[ (f*g)(n) = \sum_{d \mid n} f(d) g\left(\frac{n}{d}\right) \]
+\begin{center}
+    \begin{tabular}{ c c c }
+        $1 * \mu = \epsilon$ & $g = f * 1$ iff $f = g * \mu$ & $\sigma_k = \mathrm{Id}_k * 1$ \\
+        $\sigma_0 = d = 1 * 1$ & $\phi * 1 = \mathrm{Id}$ & $\phi^k * 1 = \mathrm{Id}_k$ \\
+        $\sigma = \phi * d$ & $d^3 * 1 = (d * 1)^2$ & 
+    \end{tabular}
+\end{center}
+$\pi(x) = \sum_{n \leq x} (\omega * \mu)(n)$, $\pi = $ prime counting function, $\omega = $ num. of prime factors \\
+\subsection{Möbius Inversion Formula}
+    If for any two functions $f, g : \mathbb{N} \to \mathbb{C}$, $g(n) = \sum_{d \mid n} f(n)$,
+    \[ f(n) = (\mu * g)(n) = \sum_{d \mid n} \mu(d) g \left(\frac{n}{d}\right) \]
