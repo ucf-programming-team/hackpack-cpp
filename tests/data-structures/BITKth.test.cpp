@@ -1,4 +1,3 @@
-#define IGNORE // atcoder tests currently don't work due to dropbox
 #define PROBLEM "https://atcoder.jp/contests/abc234/tasks/abc234_d"
 #include "../../tests/TestRunner.h"
 #include "../../content/data-structures/BIT.h"
