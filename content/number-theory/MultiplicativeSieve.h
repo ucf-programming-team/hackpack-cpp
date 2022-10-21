@@ -2,17 +2,18 @@ const int LIM = 1e6 + 10;
 vi primes;
 bitset<LIM> notPrime;
 int ps[LIM], ks[LIM];
-ll phi[LIM];
-void sieve(int n) {
-  phi[1] = 1;
+ll f[LIM];
+template<ll (*g)(int, int, int)>
+void sieve(int n = LIM) {
+  f[1] = 1;
   for (int i = 2; i < n; i++) {
-    if (!notPrime[i]) { // Define f(p^k)
+    if (!notPrime[i]) {
       primes.push_back(i);
       ps[i] = i, ks[i] = 1; 
-      phi[i] = i - 1; // EDIT HERE: f(p)
+      f[i] = g(i, i, 1);
       for (ll pk = i, x = 1ll*i*i; x < n; pk *= i, x *= i) {
         ps[x] = x, ks[x] = ks[pk] + 1;
-        phi[x] = phi[pk] * i; // EDIT HERE: f(p^k), k > 1
+        f[x] = g(x, i, ks[x]);
       }
     }
     for (ll j = 0, p; j < sz(primes) && (p = primes[j]) * i < n; j++) {
@@ -22,12 +23,12 @@ void sieve(int n) {
       if (i % p == 0) {
         if (i != ps[i]) {
           ps[x] = ps[i] * p, ks[x] = ks[i] + 1;
-          phi[x] = phi[i / ps[i]] * phi[ps[x]];
+          f[x] = f[i / ps[i]] * f[ps[x]];
         }
         break;
       }
       else {
-        phi[x] = phi[i] * phi[p];
+        f[x] = f[i] * f[p];
         ps[x] = p, ks[x] = 1;
       }
     }
