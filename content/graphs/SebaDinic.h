@@ -4,45 +4,45 @@
  * $O(VE\log{U})$
  */
 
+// disable scaling when max flow/capacity is small, or
+// sometimes on random data 
+template<bool SCALING = true>
 struct Dinic {
-  // disable scaling when max flow/capacity is small, or
-  // sometimes on random data
-  const static bool SCALING = true;
   struct Edge {
     int v, dual;
     ll cap, res;
-    constexpr ll flow() { return max(cap - res, 0ll); }
+    constexpr ll flow() { return max(cap - res, 0LL); }
   };
   int n, s, t;
-  vector<int> lvl, q, blk;
+  vi lvl, q, ptr;
   vector<vector<Edge>> adj;
-  vector<pair<int, int>> edges;
+  vector<pii> edges;
   Dinic(int n): n(n + 2), s(n++), t(n++), q(n), adj(n) {}
   int add(int u, int v, ll cap, ll flow = 0) {
-    adj[u].push_back({v, int(adj[v].size()), cap, cap - flow});
-    adj[v].push_back({u, int(adj[u].size()) - 1, 0, 0});
+    adj[u].push_back({v, sz(adj[v]), cap, cap - flow});
+    adj[v].push_back({u, sz(adj[u]) - 1, 0, 0});
     edges.emplace_back(u, adj[u].size() - 1);
     return edges.size() - 1; // this Edge's ID
   }
   ll dfs(int u, ll in) {
     if (u == t || !in) return in;
     ll flow = 0;
-    for (auto& e : adj[u]) {
-      if (e.res && !blk[e.v] && lvl[e.v] == lvl[u] - 1)
+    for (int& i = ptr[u]; i < sz(adj[u]); i++) {
+      auto& e = adj[u][i];
+      if (e.res && lvl[e.v] == lvl[u] - 1)
         if (ll out = dfs(e.v, min(in, e.res))) {
           flow += out, in -= out, e.res -= out;
           adj[e.v][e.dual].res += out;
           if (!in) return flow;
         }
     }
-    blk[u] = 1;
     return flow;
   }
   ll flow() {
     ll flow = 0;
     q[0] = t;
     for (int B = SCALING * 30; B >= 0; B--) do {
-        lvl = blk = vector<int>(n);
+        lvl = ptr = vi(n);
         int qi = 0, qe = lvl[t] = 1;
         while (qi < qe && !lvl[s]) {
           int u = q[qi++];
