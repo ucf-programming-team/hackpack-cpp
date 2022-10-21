@@ -3,9 +3,10 @@
  * Date: 2017-04-17
  * License: CC0
  * Source: folklore
- * Description: Finds all biconnected components in an undirected graph, and
- *  runs a callback for the edges in each. In a biconnected component there
- *  are at least two distinct paths between any two nodes. Note that a node can
+ * Description: Two Vertex Connected Components are sets of edges.
+ *  Finds all Two Vertex Connected Components in an undirected graph, and
+ *  runs a callback for the edges in each. In a Two Vertex Connected Component, any one
+ *  vertex can be cut while still keeping all pairs of vertices connected. Note that a node can
  *  be in several components. An edge which is not in a component is a bridge,
  *  i.e., not part of any cycle.
  * Usage:
@@ -13,7 +14,7 @@
  *  for each edge (a,b) {
  *    ed[a].emplace_back(b, eid);
  *    ed[b].emplace_back(a, eid++); }
- *  bicomps([\&](const vi\& edgelist) {...});
+ *  twoVCCs([\&](const vi\& edgelist) {...});
  * Time: O(E + V)
  * Status: tested during MIPT ICPC Workshop 2017
  */
@@ -48,7 +49,7 @@ int dfs(int at, int par, F& f) {
 }
 
 template<class F>
-void bicomps(F f) {
+void twoVCCs(F f) {
 	num.assign(sz(ed), 0);
 	rep(i,0,sz(ed)) if (!num[i]) dfs(i, -1, f);
 }
