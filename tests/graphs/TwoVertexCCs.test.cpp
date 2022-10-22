@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/two_edge_connected_components"
 #include "../../tests/TestRunner.h"
-#include "../../content/graphs/BiconnectedComponents.h"
+#include "../../content/graphs/TwoVertexCCs.h"
 #include "../../content/data-structures/DSU.h"
 
 void test() {
@@ -19,7 +19,7 @@ void test() {
 	DSU dsu(n);
 	int ans = n;
 
-	bicomps([&](const auto& cedges) {
+	twoVCCs([&](const auto& cedges) {
 		for (int i : cedges) {
 			auto [u, v] = edges[i];
 			ans -= dsu.join(u, v);

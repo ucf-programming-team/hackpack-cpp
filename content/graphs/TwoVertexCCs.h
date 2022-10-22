@@ -14,7 +14,7 @@
  *  for each edge (a,b) {
  *    ed[a].emplace_back(b, eid);
  *    ed[b].emplace_back(a, eid++); }
- *  twoVCCs([\&](const vi\& edgelist) {...});
+ *  twoVCCs([\&](const vi\& edgeIDs) {...});
  * Time: O(E + V)
  * Status: tested during MIPT ICPC Workshop 2017
  */
