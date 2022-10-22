@@ -1,29 +1,54 @@
-const int MAX_LEN = 5'000'000;
-const ll base[] = {999'999'001, 999'999'005};
-const ll mod[] = {999'999'929, 999'999'937};
-const ll basei[] = {975'215'448, 129'828'318};
-ll pw[2][MAX_LEN + 1], pwi[2][MAX_LEN + 1];
-void setupM(int mi){
-	pw[mi][0] = pwi[mi][0] = 1;
-	for(int i = 1; i <= MAX_LEN; ++i){
-		pw[mi][i] = (pw[mi][i - 1] * base[mi]) % mod[mi];
-		pwi[mi][i] = (pwi[mi][i - 1] * basei[mi]) % mod[mi];
+/**
+ * Author: Simon Lindholm
+ * Date: 2015-03-15
+ * License: CC0
+ * Source: own work
+ * Description: Self-explanatory methods for string hashing.
+ * Status: stress-tested
+ */
+#pragma once
+
+// Arithmetic mod 2^64-1. 2x slower than mod 2^64 and more
+// code, but works on evil test data (e.g. Thue-Morse, where
+// ABBA... and BAAB... of length 2^10 hash the same mod 2^64).
+// "typedef ull H;" instead if you think test data is random,
+// or work mod 10^9+7 if the Birthday paradox is not a problem.
+typedef uint64_t ull;
+struct H {
+	ull x; H(ull x=0) : x(x) {}
+	H operator+(H o) { return x + o.x + (x + o.x < x); }
+	H operator-(H o) { return *this + ~o.x; }
+	H operator*(H o) { auto m = (__uint128_t)x * o.x;
+		return H((ull)m) + (ull)(m >> 64); }
+	ull get() const { return x + !~x; }
+	bool operator==(H o) const { return get() == o.get(); }
+	bool operator<(H o) const { return get() < o.get(); }
+};
+static const H C = (ll)1e11+3; // (order ~ 3e9; random also ok)
+
+struct HashInterval {
+	vector<H> ha, pw;
+	HashInterval(string& str) : ha(sz(str)+1), pw(ha) {
+		pw[0] = 1;
+		rep(i,0,sz(str))
+			ha[i+1] = ha[i] * C + str[i],
+			pw[i+1] = pw[i] * C;
 	}
+	H hashInterval(int a, int b) { // hash [a, b)
+		return ha[b] - ha[a] * pw[b - a];
+	}
+};
+
+vector<H> getHashes(string& str, int length) {
+	if (sz(str) < length) return {};
+	H h = 0, pw = 1;
+	rep(i,0,length)
+		h = h * C + str[i], pw = pw * C;
+	vector<H> ret = {h};
+	rep(i,length,sz(str)) {
+		ret.push_back(h = h * C + str[i] - pw * str[i-length]);
+	}
+	return ret;
 }
-vll getPreM(vi &arr, int mi){
-	vll pre(size(arr));
-	pre[0] = arr[0];
-	for(int i = 1; i < size(arr); ++i) pre[i] = (pre[i - 1] + arr[i] * pw[mi][i]) % mod[mi];
-	return pre;
-}
-vector<vll> getPre(vi &arr){
-	return {getPreM(arr, 0), getPreM(arr, 1)};
-}
-ll subM(vector<vll> &pre, int l, int r, int mi){
-	if(l > r) return 0;
-	ll out = (pre[mi][r] - (l == 0 ? 0 : pre[mi][l - 1]) + mod[mi]) % mod[mi];
-	return (out * pwi[mi][l]) % mod[mi];
-}
-pll sub(vector<vll> &pre, int l, int r){
-	return {subM(pre, l, r, 0), subM(pre, l, r, 1)};
-}
+
+H hashString(string& s){H h{}; for(char c:s) h=h*C+c;return h;}
