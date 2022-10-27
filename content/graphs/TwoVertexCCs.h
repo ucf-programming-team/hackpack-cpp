@@ -3,10 +3,8 @@
  * Date: 2017-04-17
  * License: CC0
  * Source: folklore
- * Description: Two Vertex Connected Components are sets of edges.
- *  Finds all Two Vertex Connected Components in an undirected graph, and
- *  runs a callback for the edges in each. In a Two Vertex Connected Component, any one
- *  vertex can be cut while still keeping all pairs of vertices connected. Note that a node can
+ * Description: Finds all Two Vertex Connected Components and
+ *  runs a callback for the edges in each. Note that a node can
  *  be in several components. An edge which is not in a component is a bridge,
  *  i.e., not part of any cycle.
  * Usage:

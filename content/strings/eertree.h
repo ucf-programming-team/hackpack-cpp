@@ -1,103 +1,59 @@
-#include <bits/stdc++.h>
-#include <math.h>
-
-#define pb push_back
-#define mp make_pair
-#define eb emplace_back
-#define xx first
-#define yy second
-#define sz(x) ((int)x.size())
-#define all(x) x.begin(),x.end()
-
-using namespace std;
-typedef long long ll;
-typedef long double ld;
-typedef pair<int, int> pii;
-typedef vector<int> vi;
-typedef vector<ll> vl;
-
-struct eertree
-{
-  vi s, len, link, cnt, cntMax;
-  vector<vi> to;
-  int node, last, n;
-
-  eertree(): s(1), len(2), cnt(2), link(2), to(2, vi(26, 0)), cntMax(2)
-  {
-    s[0] = -1;
-    link[0] = link[1] = 1;
-    len[0] = 0, len[1] = -1;
-    node = 2;
-    n = 1;
-    last = 0;
-  }
-
-  int get_link(int v)
-  {
-    while (s[n-len[v]-2] != s[n-1]) v = link[v];
-    return v;
-  }
-
-  void insert(int c)
-  {
-    n++;
-    s.pb(c), len.pb(0), cnt.pb(0), link.pb(0), to.eb(26, 0);
-    cntMax.pb(0);
-  }
-  
-  void add(char ch)
-  {
-    int c = ch - 'a';
-    insert(c);
-    last = get_link(last);
-
-    if (to[last][c] == 0)
-    {
-      len[node] = len[last] + 2;
-      link[node] = to[get_link(link[last])][c];
-      to[last][c] = node;
-      node++;
-    }
-
-    last = to[last][c];
-    cntMax[last]++;
-  }
-
-  void go()
-  {
-    for (int i = node-1; i >= 0; i--)
-      cnt[i] = cntMax[i];
-
-    for (int i = node-1; i >= 0; i--)
-      cnt[link[i]] += cnt[i];
-  }
+struct eertree {
+	vi s, rem;
+	struct node {
+		int len = 0, link = 0, from = 0, cnt = 0;
+		int visit = -1;
+		array<int, 26> to{};
+	};
+	vector<node> T;
+	int last, n;
+	int head = 1, overall = 0;
+	eertree(): s(1), T(2), rem(2, -1), last(0), n(1) {
+		s.reserve(1e6 + 5), T.reserve(1e6 + 5), rem.reserve(1e6 + 5);
+		s[0] = -1;
+		T[0].link = T[1].link = 1;
+		T[1].len = -1;
+		T[0].cnt = T[1].cnt = 1;
+	}
+	int get_link(int v) {
+		while (s[n - T[v].len - 2] != s[n - 1]) v = T[v].link;
+		return v;
+	}
+	void update(int u, int p) {
+		if (u < 2) return;
+		auto& x = T[u];
+		if (p > x.visit) x.visit = p;
+		if (!x.cnt && (rem[x.visit] == -1 || T[rem[x.visit]].len < x.len))
+			rem[x.visit] = u;
+	}
+	void add(char ch) {
+		int c = ch - 'a';
+		s.push_back(c), rem.push_back(0);
+		n++;
+		last = get_link(last);
+		if (T[last].to[c] == 0) {
+			auto& nd = T.emplace_back();
+			nd.len = T[last].len + 2;
+			nd.link = T[get_link(T[last].link)].to[c];
+			nd.from = last;
+			T[last].to[c] = sz(T) - 1;
+			T[nd.from].cnt++, T[nd.link].cnt++;
+			overall++;
+		}
+		last = T[last].to[c];
+		update(last, n - T[last].len);
+	}
+	void pop() {
+		int node = rem[head], c = s[head];
+		s[head++] = -1;
+		if (node < 2) return;
+		auto& nd = T[node];
+		if (nd.cnt || nd.visit != head - 1) return;
+		if (n - head + 1 == T[last].len) last = T[last].link;
+		overall--;
+		T[nd.from].to[c] = 0;
+		T[nd.from].cnt--, T[nd.link].cnt--;
+		update(nd.from, head);
+		update(nd.link, head - 1 + nd.len - T[nd.link].len);
+	}
 };
-
-void solve()
-{   
-  string s; cin >> s;
-
-  eertree et;
-
-  for (int i = 0; i < s.length(); i++)
-    et.add(s[i]);
-
-  et.go();
-
-  ll ans = 0;
-  for (int i = 0; i < et.cnt.size(); i++)
-    ans = max(ans, et.cnt[i] * 1ll * et.len[i]);
-    // cout << i << ": " << et.cnt[i] << ", " << et.len[i] << '\n';
-
-  cout << ans << '\n';
-}       
-
-int main()
-{
-  ios::sync_with_stdio(false); cin.tie(0);
-
-  // int t; cin >> t; while (t--)
-  solve();
-
-  return 0;
-}
