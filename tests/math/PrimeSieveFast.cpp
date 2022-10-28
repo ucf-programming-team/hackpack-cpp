@@ -4,7 +4,7 @@ using namespace std;
 
 using ll = long long;
 
-#include "../../content/math/PrimeSieveFast.h"
+#include "../../content/number-theory/PrimeSieveFast.h"
 
 int main() {
   cin.tie(0)->sync_with_stdio(0);

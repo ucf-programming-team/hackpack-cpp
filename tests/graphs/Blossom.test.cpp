@@ -1,4 +1,4 @@
-#define PROBLEM https://judge.yosupo.jp/problem/general_matching
+#define PROBLEM "https://judge.yosupo.jp/problem/general_matching"
 #include "../../tests/TestRunner.h"
 #include "../../content/graphs/Blossom.h"
 

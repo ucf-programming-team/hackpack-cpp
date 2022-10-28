@@ -4,7 +4,7 @@ using namespace std;
 
 using ll = long long;
 
-#include "../../content/math/PrimeSieve.h"
+#include "../../content/number-theory/PrimeSieve.h"
 // change MAX_PR to
 // const int MAX_PR = 100'000'000;
 
