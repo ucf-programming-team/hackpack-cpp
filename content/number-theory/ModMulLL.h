@@ -15,7 +15,6 @@
  * $0 \le a, b \le c < 2^{52} \approx 4.5 \cdot 10^{15}$.
  */
 #pragma once
-
 typedef unsigned long long ull;
 ull modmul(ull a, ull b, ull M) {
 	ll ret = a * b - M * ull(1.L / M * a * b);

@@ -4,17 +4,17 @@
 #include "../../content/data-structures/DSU.h"
 
 void test() {
-  int n, m;
-  cin >> n >> m;
+	int n, m;
+	cin >> n >> m;
 
 	ed.resize(n);
 	vector<pii> edges(m);
-  for (int i = 0; i < m; i++) {
-    auto& [u, v] = edges[i];
+	for (int i = 0; i < m; i++) {
+		auto& [u, v] = edges[i];
 		cin >> u >> v;
 		ed[u].emplace_back(v, i);
 		ed[v].emplace_back(u, i);
-  }
+	}
 
 	DSU dsu(n);
 	int ans = n;
@@ -27,8 +27,7 @@ void test() {
 	});
 
 	vector<vi> out(n);
-	for (int i = 0; i < n; i++)
-		out[dsu.find(i)].push_back(i);
+	for (int i = 0; i < n; i++) out[dsu.find(i)].push_back(i);
 
 	cout << ans << "\n";
 	for (auto& it : out) {

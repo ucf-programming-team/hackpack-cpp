@@ -9,18 +9,18 @@ using ll = long long;
 // const int MAX_PR = 100'000'000;
 
 int main() {
-  cin.tie(0)->sync_with_stdio(0);
-  cin.exceptions(cin.failbit);
+	cin.tie(0)->sync_with_stdio(0);
+	cin.exceptions(cin.failbit);
 
-  int n, q;
-  cin >> n >> q;
+	int n, q;
+	cin >> n >> q;
 
-  vector<int> primes = primeSieve(n + 1);
-  cout << primes.size() << '\n';
+	vector<int> primes = primeSieve(n + 1);
+	cout << primes.size() << '\n';
 
-  for (int i = 0; i < q; i++) {
-    int x;
-    cin >> x;
-    cout << isprime[x] << '\n';
-  }
+	for (int i = 0; i < q; i++) {
+		int x;
+		cin >> x;
+		cout << isprime[x] << '\n';
+	}
 }

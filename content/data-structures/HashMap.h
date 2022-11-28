@@ -15,7 +15,7 @@ struct chash { // large odd number for C
 		return __builtin_bswap64(x * C);
 	}
 };
-__gnu_pbds::gp_hash_table<ll, int, chash> h(
-	{}, {}, {}, {}, {1 << 16});
+__gnu_pbds::gp_hash_table<ll, int, chash> h({}, {}, {}, {},
+	{1 << 16});
 template<class T> // for auto resize
 using hash_map = __gnu_pbds::gp_hash_table<ll, T, chash>;

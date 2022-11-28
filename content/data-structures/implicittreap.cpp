@@ -20,15 +20,13 @@ void update(node* root) {
 }
 void merge(node*& t, node* l, node* r) {
 	if (!l || !r) t = l ? l : r;
-	else if (l->prio > r->prio)
-		merge(l->r, l->r, r), t = l;
-	else
-		merge(r->l, l, r->l), t = r;
+	else if (l->prio > r->prio) merge(l->r, l->r, r), t = l;
+	else merge(r->l, l, r->l), t = r;
 	update(t);
 }
 //splits s.t. l < index && r >= index
-void split(
-	node* t, node*& l, node*& r, int index, int add = 0) {
+void split(node* t, node*& l, node*& r, int index,
+	int add = 0) {
 	if (!t) return void(l = r = NULL);
 	int cur_index = add + getCount(t->l);
 	if (index <= cur_index)

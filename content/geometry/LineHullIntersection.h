@@ -18,12 +18,11 @@
  * Status: stress-tested
  */
 #pragma once
-
 #include "Point.h"
-
-#define cmp(i,j) sgn(dir.perp().cross(poly[(i)%n]-poly[(j)%n]))
+#define cmp(i, j) \
+	sgn(dir.perp().cross(poly[(i) % n] - poly[(j) % n]))
 #define extr(i) cmp(i + 1, i) >= 0 && cmp(i, i - 1 + n) < 0
-template <class P> int extrVertex(vector<P>& poly, P dir) {
+template<class P> int extrVertex(vector<P>& poly, P dir) {
 	int n = sz(poly), lo = 0, hi = n;
 	if (extr(0)) return 0;
 	while (lo + 1 < hi) {
@@ -34,16 +33,14 @@ template <class P> int extrVertex(vector<P>& poly, P dir) {
 	}
 	return lo;
 }
-
 #define cmpL(i) sgn(a.cross(poly[i], b))
-template <class P>
+template<class P>
 array<int, 2> lineHull(P a, P b, vector<P>& poly) {
 	int endA = extrVertex(poly, (a - b).perp());
 	int endB = extrVertex(poly, (b - a).perp());
-	if (cmpL(endA) < 0 || cmpL(endB) > 0)
-		return {-1, -1};
+	if (cmpL(endA) < 0 || cmpL(endB) > 0) return {-1, -1};
 	array<int, 2> res;
-	rep(i,0,2) {
+	rep(i, 0, 2) {
 		int lo = endB, hi = endA, n = sz(poly);
 		while ((lo + 1) % n != hi) {
 			int m = ((lo + hi + (lo < hi ? 0 : n)) / 2) % n;
@@ -55,8 +52,8 @@ array<int, 2> lineHull(P a, P b, vector<P>& poly) {
 	if (res[0] == res[1]) return {res[0], -1};
 	if (!cmpL(res[0]) && !cmpL(res[1]))
 		switch ((res[0] - res[1] + sz(poly) + 1) % sz(poly)) {
-			case 0: return {res[0], res[0]};
-			case 2: return {res[1], res[1]};
+		case 0: return {res[0], res[0]};
+		case 2: return {res[1], res[1]};
 		}
 	return res;
 }

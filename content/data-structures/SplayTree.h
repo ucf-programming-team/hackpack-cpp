@@ -57,8 +57,7 @@ struct SplayTree {
 		k = min(max(k, 0), T[x].cnt - 1);
 		for (int l = T[x].ch[0]; T[l].cnt != k; l = T[x].cnt[0])
 			if (T[l].cnt < k) x = l;
-			else
-				k -= T[l].cnt + 1, x = T[x].ch[1];
+			else k -= T[l].cnt + 1, x = T[x].ch[1];
 		return splay(x), x;
 	}
 	// k = size of left subtree

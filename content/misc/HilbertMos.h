@@ -3,7 +3,6 @@
  * Description: Maps points on a $2^k \times 2^k$ matrix
  * to their index on the Hilbert curve.
  */
-
 const int logn = 21, maxn = 1 << logn;
 ll hilbert(int x, int y) {
 	ll d = 0;

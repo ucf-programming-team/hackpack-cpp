@@ -16,15 +16,17 @@ struct prefix_mul {
 		ll ans = 0;
 		for (ll i = 2, la; i <= x; i = la + 1) {
 			la = x / (x / i);
-			ans = (ans + (p_g(la) - p_g(i-1) + mod) * calc(x/i)) % mod;
+			ans =
+				(ans + (p_g(la) - p_g(i - 1) + mod) * calc(x / i)) %
+				mod;
 		}
 		ans = (p_c(x) - ans + mod) * inv % mod;
 		return mem[x] = ans;
 	}
-	ll solve (ll n) {
+	ll solve(ll n) {
 		if (n <= 0) return 0;
-    this->n = n;
+		this->n = n;
 		inv = binpow(p_g(1), mod - 2);
-		return calc(n); 
+		return calc(n);
 	}
 };
