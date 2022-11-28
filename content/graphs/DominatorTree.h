@@ -1,24 +1,25 @@
-// given a digraph 'dominator_tree' will return the edges of the dominator tree given as an adj. list (directed tree downwards from the root)
+/**
+ * Description: Given a digraph 'dominator_tree' will return the edges of the dominator tree given as an adj. list (directed tree downwards from the root)
+ * Time: $O((n + m) * log n)$ where n is the number of verticies in the graph and m is the number of edges
+ * Status: Tested
+ */
 vector<vi> dominator_tree(const vector<vi> & adj, int root) {
-	int n = 2 * sz(adj);
-	vector<vi> ans(n);
-	vector<vi> radj(n), child(n), sdomChild(n);
-	vi label(n), rlabel(n), sdom(n), dom(n);
-	vi par(n), bes(n);
-	int co = 0;
+	int n = 2 * sz(adj), co = 0;
+	vector<vi> ans(n), radj(n), child(n), sdomChild(n);
+	vi label(n), rlabel(n), sdom(n), dom(n), par(n), bes(n);
 	auto get = [&](auto self, int x) -> int {
 		if (par[x] != x) {
-			int t = self(self, par[x]); par[x] = par[par[x]];
+			int t = self(self, par[x]), par[x] = par[par[x]];
 			if (sdom[t] < sdom[bes[x]]) bes[x] = t;
 		}
 		return bes[x];
 	};
 	auto dfs = [&](auto self, int x) -> void {
-		label[x] = ++co; rlabel[co] = x;
+		label[x] = ++co, rlabel[co] = x;
 		sdom[co] = par[co] = bes[co] = co;
 		for(auto y : adj[x]) {
 			if (!label[y]) {
-				self(self, y); child[label[x]].push_back(label[y]); }
+				self(self, y), child[label[x]].push_back(label[y]); }
 			radj[label[y]].push_back(label[x]);
 		}
 	};
