@@ -14,8 +14,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install clang-format
-        run: sudo apt-get install clang-format-10
+      - name: Install clang-format-15
+        run: |
+          source /etc/os-release
+          wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add -
+          sudo add-apt-repository "deb http://apt.llvm.org/$UBUNTU_CODENAME/ llvm-toolchain-$UBUNTU_CODENAME-15 main"
+          sudo apt-get update
+          sudo apt-get install clang-format-15
 
       - name: Validate Formatting
         run: sh ./doc/scripts/validate-formatting.sh

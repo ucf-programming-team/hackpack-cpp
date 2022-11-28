@@ -13,7 +13,7 @@ template<class T, class C = less<T>> struct RMQ {
 			for (int i = 0; i + 2 * len - 1 < sz(a); i++)
 				t[k][i] = min(t[k - 1][i], t[k - 1][i + len], cmp);
 	}
-	T query(int a, int b) { // inclusive-exclusive interval [a, b)
+	T query(int a, int b) { // inclusive-exclusive [a, b)
 		int k = __lg(b - a), len = 1 << k;
 		return min(t[k][a], t[k][b - len], cmp);
 	}

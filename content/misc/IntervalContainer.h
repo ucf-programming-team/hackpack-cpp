@@ -8,7 +8,6 @@
  * Status: stress-tested
  */
 #pragma once
-
 set<pii>::iterator addInterval(set<pii>& is, int L, int R) {
 	if (L == R) return is.end();
 	auto it = is.lower_bound({L, R}), before = it;
@@ -21,9 +20,8 @@ set<pii>::iterator addInterval(set<pii>& is, int L, int R) {
 		R = max(R, it->second);
 		is.erase(it);
 	}
-	return is.insert(before, {L,R});
+	return is.insert(before, {L, R});
 }
-
 void removeInterval(set<pii>& is, int L, int R) {
 	if (L == R) return;
 	auto it = addInterval(is, L, R);

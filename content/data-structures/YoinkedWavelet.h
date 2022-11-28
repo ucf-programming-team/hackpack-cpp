@@ -8,7 +8,7 @@ template<typename T> struct WaveletTree {
 		T lo, T hi):
 		lo(lo),
 		hi(hi), idxs(idxs), left_sum(1, 0) {
-		if (is_leaf()) { return; }
+		if (is_leaf()) return;
 		T mid = (lo + hi) / 2;
 		vector<size_t> lo_idxs, hi_idxs;
 		left_sum.reserve(idxs.size() + 1);
@@ -35,13 +35,13 @@ template<typename T> struct WaveletTree {
 	// k is 0 indexed.
 	// Returns -1 on failure
 	ssize_t kth(size_t l, size_t r, size_t k) {
-		if (is_leaf()) { return k < idxs.size() ? idxs[k] : -1; }
+		if (is_leaf()) return k < idxs.size() ? idxs[k] : -1;
 		int32_t in_left = left_sum[r] - left_sum[l];
 		if (k < in_left) {
 			return children[0]->kth(left_sum[l], left_sum[r], k);
 		} else {
-			return children[1]->kth(
-				l - left_sum[l], r - left_sum[r], k - in_left);
+			return children[1]->kth(l - left_sum[l], r - left_sum[r],
+				k - in_left);
 		}
 	}
 	T lo;

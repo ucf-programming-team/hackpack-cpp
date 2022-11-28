@@ -43,10 +43,8 @@ node* splay(node* x) {
 		// prop(z), prop(y), prop(x); // needed for LCT
 		int dy = dir(y, x), dz = dir(z, y);
 		if (!z) rotate(y, dy);
-		else if (dy == dz)
-			rotate(z, dz), rotate(y, dy);
-		else
-			rotate(y, dy), rotate(z, dz);
+		else if (dy == dz) rotate(z, dz), rotate(y, dy);
+		else rotate(y, dy), rotate(z, dz);
 	}
 	return x;
 }
@@ -56,8 +54,7 @@ node* nodeAt(node* x, int pos) {
 	if (!x) return 0;
 	while (prop(x), cnt(x->ch[0]) != pos)
 		if (pos < cnt(x->ch[0])) x = x->ch[0];
-		else
-			pos -= cnt(x->ch[0]) + 1, x = x->ch[1];
+		else pos -= cnt(x->ch[0]) + 1, x = x->ch[1];
 	return splay(x);
 }
 node* merge(node* l, node* r) {

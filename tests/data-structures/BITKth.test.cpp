@@ -12,7 +12,6 @@ void test() {
 		int x;
 		cin >> x;
 		bit.update(n - x, 1);
-		if (i >= k-1)
-			cout << n - bit.kth(k-1) << "\n"; 
+		if (i >= k - 1) cout << n - bit.kth(k - 1) << "\n";
 	}
 }

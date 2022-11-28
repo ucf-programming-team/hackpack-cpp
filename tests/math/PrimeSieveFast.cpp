@@ -7,22 +7,22 @@ using ll = long long;
 #include "../../content/number-theory/PrimeSieveFast.h"
 
 int main() {
-  cin.tie(0)->sync_with_stdio(0);
-  cin.exceptions(cin.failbit);
+	cin.tie(0)->sync_with_stdio(0);
+	cin.exceptions(cin.failbit);
 
-  int n, q;
-  cin >> n >> q;
+	int n, q;
+	cin >> n >> q;
 
-  vector<int> allPrimes = primeSieve();
-  int cnt = 0;
-  for (int i : allPrimes)
-    if (i <= n) cnt++;
+	vector<int> allPrimes = primeSieve();
+	int cnt = 0;
+	for (int i : allPrimes)
+		if (i <= n) cnt++;
 
-  cout << cnt << '\n';
+	cout << cnt << '\n';
 
-  for (int i = 0; i < q; i++) {
-    int x;
-    cin >> x;
-    cout << isPrime[x] << '\n';
-  }
+	for (int i = 0; i < q; i++) {
+		int x;
+		cin >> x;
+		cout << isPrime[x] << '\n';
+	}
 }

@@ -9,7 +9,8 @@ struct eertree {
 	int last, n;
 	int head = 1, overall = 0;
 	eertree(): s(1), T(2), rem(2, -1), last(0), n(1) {
-		s.reserve(1e6 + 5), T.reserve(1e6 + 5), rem.reserve(1e6 + 5);
+		s.reserve(1e6 + 5), T.reserve(1e6 + 5),
+			rem.reserve(1e6 + 5);
 		s[0] = -1;
 		T[0].link = T[1].link = 1;
 		T[1].len = -1;
@@ -23,7 +24,8 @@ struct eertree {
 		if (u < 2) return;
 		auto& x = T[u];
 		if (p > x.visit) x.visit = p;
-		if (!x.cnt && (rem[x.visit] == -1 || T[rem[x.visit]].len < x.len))
+		if (!x.cnt &&
+			(rem[x.visit] == -1 || T[rem[x.visit]].len < x.len))
 			rem[x.visit] = u;
 	}
 	void add(char ch) {

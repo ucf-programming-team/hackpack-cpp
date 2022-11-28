@@ -10,10 +10,11 @@
  * Status: Stress-tested, also tested on NWERC 2018 fastestspeedrun
  */
 #pragma once
-
 #include "../data-structures/UnionFindRollback.h"
-
-struct Edge { int a, b; ll w; };
+struct Edge {
+	int a, b;
+	ll w;
+};
 struct Node { /// lazy skew heap node
 	Edge key;
 	Node *l, *r;
@@ -24,16 +25,16 @@ struct Node { /// lazy skew heap node
 		if (r) r->delta += delta;
 		delta = 0;
 	}
-	Edge top() { prop(); return key; }
+	Edge top() { return prop(), key; }
 };
-Node *merge(Node *a, Node *b) {
+Node* merge(Node* a, Node* b) {
 	if (!a || !b) return a ?: b;
 	a->prop(), b->prop();
 	if (a->key.w > b->key.w) swap(a, b);
 	swap(a->l, (a->r = merge(b, a->r)));
 	return a;
 }
-void pop(Node*& a) { a->prop(); a = merge(a->l, a->r); }
+void pop(Node*& a) { a->prop(), a = merge(a->l, a->r); }
 pair<ll, vi> dmst(int n, int r, vector<Edge>& g) {
 	RollbackUF uf(n);
 	vector<Node*> heap(n);
@@ -41,12 +42,12 @@ pair<ll, vi> dmst(int n, int r, vector<Edge>& g) {
 	ll res = 0;
 	vi seen(n, -1), path(n), par(n);
 	seen[r] = r;
-	vector<Edge> Q(n), in(n, {-1,-1}), comp;
+	vector<Edge> Q(n), in(n, {-1, -1}), comp;
 	deque<tuple<int, int, vector<Edge>>> cycs;
-	rep(s,0,n) {
+	rep(s, 0, n) {
 		int u = s, qi = 0, w;
 		while (seen[u] < 0) {
-			if (!heap[u]) return {-1,{}};
+			if (!heap[u]) return {-1, {}};
 			Edge e = heap[u]->top();
 			heap[u]->delta -= e.w, pop(heap[u]);
 			Q[qi] = e, path[qi++] = u, seen[u] = s;
@@ -60,14 +61,14 @@ pair<ll, vi> dmst(int n, int r, vector<Edge>& g) {
 				cycs.push_front({u, time, {&Q[qi], &Q[end]}});
 			}
 		}
-		rep(i,0,qi) in[uf.find(Q[i].b)] = Q[i];
+		rep(i, 0, qi) in[uf.find(Q[i].b)] = Q[i];
 	}
-	for (auto& [u,t,comp] : cycs) { // restore sol (optional)
+	for (auto& [u, t, comp] : cycs) { // restore sol (optional)
 		uf.rollback(t);
 		Edge inEdge = in[u];
 		for (auto& e : comp) in[uf.find(e.b)] = e;
 		in[uf.find(inEdge.b)] = inEdge;
 	}
-	rep(i,0,n) par[i] = in[i].a;
+	rep(i, 0, n) par[i] = in[i].a;
 	return {res, par};
 }

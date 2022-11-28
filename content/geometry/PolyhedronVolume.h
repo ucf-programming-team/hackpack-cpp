@@ -5,7 +5,6 @@
  * Status: tested
  */
 #pragma once
-
 template<class V, class L>
 double signedPolyVolume(const V& p, const L& trilist) {
 	double v = 0;

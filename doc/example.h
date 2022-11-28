@@ -12,46 +12,37 @@
  *  int random = exampleFunction2();
  */
 #pragma once
-
 /// Headers and macros from contest/template.h are
 /// automatically included.
-
 #include "Example.h" /// Header name will be kept in final list.
-
 struct ExampleStructure {
-  ll alpha;
-  pii nodes;
-  vi edges;
+	ll alpha;
+	pii nodes;
+	vi edges;
 };
-
 int exampleFunction1(vi mice, int* cats, int catsCount) {
-  /// This is a stupid comment that will be removed.
-  int sum = 0;
-
-  rep(i, 1, catsCount) {
-    // This comment will be kept!
-    for (auto it : mice) {
-      /// This will be removed.
-      // And this kept.
-      sum += cats[i] * it;
-    }
-  }
-  // Use tab indent and keep a line width of at most 63 chars,
-  // where tabs count as 2 characters wide.
-  //<---------------------Maximum width----------------------->
-  return sum;
+	/// This is a stupid comment that will be removed.
+	int sum = 0;
+	rep(i, 1, catsCount) {
+		// This comment will be kept!
+		for (auto it : mice) {
+			/// This will be removed.
+			// And this kept.
+			sum += cats[i] * it;
+		}
+	}
+	// Use tab indent and keep a line width of at most 63 chars,
+	// where tabs count as 2 characters wide.
+	//<---------------------Maximum width----------------------->
+	return sum;
 }
-
 int exampleFunction2() { return rand(); }
-
 int exampleFunction3(int a, int b, int c) {
-  return exampleFunction2() * a * b * c;
+	return exampleFunction2() * a * b * c;
 }
-
 void ultraOneLiner() {
-  cout << "this should not be on a single line\n";
+	cout << "this should not be on a single line\n";
 }
-
 void badFormatting() {
-  for (int i = 0; i < 1000; i++) { cout << i << endl; }
+	for (int i = 0; i < 1000; i++) cout << i << endl;
 }

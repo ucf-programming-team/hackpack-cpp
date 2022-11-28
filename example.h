@@ -15,5 +15,4 @@
  * the hackpack Time: $O(1)$. Memory complexity of the code.
  * This also goes in the hackpack Status: Untested
  */
-
 void foo(int* ptr) { cout << ptr << '\n'; }

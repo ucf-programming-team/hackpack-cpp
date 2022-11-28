@@ -12,11 +12,10 @@
  * and otherwise lies in $[1, (1 + a/2^64) * b)$.
  */
 #pragma once
-
 typedef unsigned long long ull;
 struct FastMod {
 	ull b, m;
-	FastMod(ull b) : b(b), m(-1ULL / b) {}
+	FastMod(ull b): b(b), m(-1ULL / b) {}
 	ull reduce(ull a) { // a % b + (0 or b)
 		return a - (ull)((__uint128_t(m) * a) >> 64) * b;
 	}
