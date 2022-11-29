@@ -18,10 +18,8 @@ void test() {
 	vi p(n, -1);
 	p[s] = s;
 	for (int i = 0; i < n; i++)
-		for (int j : tree[i])
-			p[j] = i;
+		for (int j : tree[i]) p[j] = i;
 
-	for (int i = 0; i < n; i++)
-		cout << p[i] << ' ';
+	for (int i = 0; i < n; i++) cout << p[i] << ' ';
 	cout << '\n';
 }
