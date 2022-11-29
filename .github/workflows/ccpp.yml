@@ -25,10 +25,9 @@ jobs:
       - name: Validate Formatting
         run: sh ./doc/scripts/validate-formatting.sh
 
-  create-release:
+  build-kactl:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    if: ${{ github.event_name == 'push' }} # don't make release on PR
 
     needs: validate
 
@@ -47,6 +46,13 @@ jobs:
       - name: Compress snippets
         run: zip -r snippets.zip ./snippets
 
+  create-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    if: ${{ github.event_name == 'push' }} # don't make release on PR
+
+    needs: build-kactl
+      - uses: actions/checkout@v2
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
