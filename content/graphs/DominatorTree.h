@@ -9,7 +9,8 @@ vector<vi> dominator_tree(const vector<vi>& adj, int root) {
 	vi label(n), rlabel(n), sdom(n), dom(n), par(n), bes(n);
 	auto get = [&](auto self, int x) -> int {
 		if (par[x] != x) {
-			int t = self(self, par[x]), par[x] = par[par[x]];
+			int t = self(self, par[x]);
+			par[x] = par[par[x]];
 			if (sdom[t] < sdom[bes[x]]) bes[x] = t;
 		}
 		return bes[x];

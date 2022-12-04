@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/dominatortree"
 #include "../../tests/TestRunner.h"
-#include "../../content/graphs/dominator_tree.h"
+#include "../../content/graphs/DominatorTree.h"
 
 void test() {
 	int n, m, s;
