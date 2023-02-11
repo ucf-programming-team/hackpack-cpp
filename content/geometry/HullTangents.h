@@ -15,12 +15,14 @@
 template<bool R, class P> int getTangent(vector<P>& h, P p) {
 	int n = sz(h), lo = 0, hi = n - 1, md;
 	if (cmp(0, 1) >= R && cmp(0, n - 1) >= !R) return 0;
-	while (md = (lo + hi + 1) / 2) {
+	while (md = (lo + hi + 1) / 2, lo < hi) {
 		auto a = cmp(md, md + 1), b = cmp(md, lo);
 		if (a >= R && cmp(md, md - 1) >= !R) return md;
-		if (cmp(lo, lo + 1) < R) (a < R && b >= 0 ? lo : hi) = md;
-		else (a < R || b <= 0 ? lo : hi) = md;
+		if (cmp(lo, lo + 1) < R)
+			a < R&& b >= 0 ? lo = md : hi = md - 1;
+		else a < R || b <= 0 ? lo = md : hi = md - 1;
 	}
+	return -1; // point strictly inside hull
 }
 template<class P> pii hullTangents(vector<P>& h, P p) {
 	return {getTangent<0>(h, p), getTangent<1>(h, p)};
