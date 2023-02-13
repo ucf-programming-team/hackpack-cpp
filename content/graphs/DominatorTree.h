@@ -6,7 +6,7 @@
 vector<vi> dominator_tree(const vector<vi>& adj, int root) {
 	int n = sz(adj) + 1, co = 0;
 	vector<vi> ans(n), radj(n), child(n), sdomChild(n);
-	vi label(n), rlabel(n), sdom(n), dom(n), par(n), bes(n);
+	vi id(n), rid(n), sdom(n), dom(n), par(n), bes(n);
 	auto get = [&](auto self, int x) -> int {
 		if (par[x] != x) {
 			int t = self(self, par[x]);
@@ -16,12 +16,12 @@ vector<vi> dominator_tree(const vector<vi>& adj, int root) {
 		return bes[x];
 	};
 	auto dfs = [&](auto self, int x) -> void {
-		label[x] = ++co, rlabel[co] = x;
+		id[x] = ++co, rid[co] = x;
 		sdom[co] = par[co] = bes[co] = co;
 		for (auto y : adj[x]) {
-			if (!label[y])
-				self(self, y), child[label[x]].push_back(label[y]);
-			radj[label[y]].push_back(label[x]);
+			if (!id[y])
+				self(self, y), child[id[x]].push_back(id[y]);
+			radj[id[y]].push_back(id[x]);
 		}
 	};
 	dfs(dfs, root);
@@ -38,7 +38,7 @@ vector<vi> dominator_tree(const vector<vi>& adj, int root) {
 	}
 	for (int i = 2; i < co + 1; ++i) {
 		if (dom[i] != sdom[i]) dom[i] = dom[dom[i]];
-		ans[rlabel[dom[i]]].push_back(rlabel[i]);
+		ans[rid[dom[i]]].push_back(rid[i]);
 	}
 	return ans;
 }
