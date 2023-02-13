@@ -4,7 +4,7 @@
  * Status: Tested
  */
 vector<vi> dominator_tree(const vector<vi>& adj, int root) {
-	int n = 2 * sz(adj), co = 0;
+	int n = sz(adj) + 1, co = 0;
 	vector<vi> ans(n), radj(n), child(n), sdomChild(n);
 	vi label(n), rlabel(n), sdom(n), dom(n), par(n), bes(n);
 	auto get = [&](auto self, int x) -> int {
