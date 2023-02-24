@@ -1,5 +1,5 @@
 /**
- * Description: Given a digraph 'dominator_tree' will return the edges of the dominator tree given as an adj. list (directed tree downwards from the root)
+ * Description: Given a digraph, return the edges of the dominator tree given as an adj. list (directed tree downwards from the root)
  * Time: $O((n + m) * log n)$ where n is the number of verticies in the graph and m is the number of edges
  * Status: Tested
  */
