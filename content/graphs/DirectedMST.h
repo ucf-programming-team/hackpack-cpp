@@ -5,7 +5,8 @@
  * Source: https://github.com/spaghetti-source/algorithm/blob/master/graph/arborescence.cc
  * and https://github.com/bqi343/USACO/blob/42d177dfb9d6ce350389583cfa71484eb8ae614c/Implementations/content/graphs%20(12)/Advanced/DirectedMST.h for the reconstruction
  * Description: Finds a minimum spanning
- * tree/arborescence of a directed graph, given a root node. If no MST exists, returns -1.
+ * tree/arborescence of a directed graph, given a root node. If no MST exists, returns -1. Usage:
+ * vector<Edge> edges; edges.push_back({u, v, w});
  * Time: O(E \log V)
  * Status: Stress-tested, also tested on NWERC 2018 fastestspeedrun
  */
