@@ -2,7 +2,8 @@
  * Author: User adamant on CodeForces
  * Source: http://codeforces.com/blog/entry/12143
  * Description: For each position in a string, computes p[0][i] = half length of
- *  longest even palindrome around pos i, p[1][i] = longest odd (half rounded down).
+ *  longest even palindrome around pos i (center between i-1 and i),
+ *  p[1][i] = longest odd (half rounded down) (center at i).
  * Time: O(N)
  * Status: Stress-tested
  */
