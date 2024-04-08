@@ -22,3 +22,7 @@ $\pi(x) = \sum_{n \leq x} (\omega * \mu)(n)$, $\pi = $ prime counting function, 
 \subsection{Möbius Inversion Formula}
     If for any two functions $f, g : \mathbb{N} \to \mathbb{C}$, $g(n) = \sum_{d \mid n} f(n)$,
     \[ f(n) = (\mu * g)(n) = \sum_{d \mid n} \mu(d) g \left(\frac{n}{d}\right) \]
+\subsection{Inverse of Large Factorials}
+    Hardcoded Factorial Inverses to avoid having to type modpow. MAX = 5*10^6
+    $ invfact[MAX] mod 998244353 = 310402238 $
+    $ invfact[MAX] mod 1000000007 = 255895843 $
