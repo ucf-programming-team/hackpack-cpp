@@ -44,7 +44,7 @@ template<bool SCALING = true> struct Dinic {
           if (!lvl[e.v] && adj[e.v][e.dual].res >> B)
             q[qe++] = e.v, lvl[e.v] = lvl[u] + 1; }
       if (lvl[s]) flow += dfs(s, LLONG_MAX); } while (lvl[s]);
-    return flow; }
+    return flow; } // PREFIX HASH: 39304f
   Edge& get(int id) { // get Edge object from its ID
     return adj[edges[id].first][edges[id].second]; }
   void clear() {
