@@ -1,6 +1,6 @@
 /**
  * Description: For each unique palindromic substring, computes suffix link.
- * 	compute() calculates the frequencies of each palindrome in O(|s|)
+ * 	compute() calculates the frequencies of each palindrome in $O(|s|)$
  * Status: tested on https://codeforces.com/gym/104857/problem/C
  */
 struct eertree {
