@@ -15,6 +15,7 @@ template<class T> struct BIT {
     T ans = 0;
     for (; i; i -= i & -i) ans += s[i];
     return ans; } // INCLUSIVE-EXCLUSIVE interval [l, r)
+  // partial hash 2fe2e1
   T query(int l, int r) { return query(r) - query(l); }
   int kth(T k) { // 0-indexed, returns n if k > sum of tree
     if (k < 0) return -1;

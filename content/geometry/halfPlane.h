@@ -49,7 +49,7 @@ double Intersection_Area(vector<Line> b) {
   while (q < h - 1 && c[h].out(c[q].intpo(c[q + 1])))
     q++; // Intersection is empty. This is sometimes different from the case when
     // the intersection area is 0.
-  if (h - q <= 1) return 0;
+  if (h - q <= 1) return 0; // partial hash cf9f81
   c[h + 1] = c[q];
   vector<P> s;
   for (i = q; i <= h; i++) s.push_back(c[i].intpo(c[i + 1]));
