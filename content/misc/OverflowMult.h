@@ -8,7 +8,6 @@
 #pragma once
 const ll MAX = 2e18;
 ll mult(ll a, ll b) {
-	if (b == 0) return 0;
-	if (a >= (MAX + b - 1) / b) return MAX;
-	return a * b;
-}
+  if (b == 0) return 0;
+  if (a >= (MAX + b - 1) / b) return MAX;
+  return a * b; }
