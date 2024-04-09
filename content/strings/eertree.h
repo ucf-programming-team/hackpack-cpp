@@ -1,7 +1,12 @@
+/**
+ * Description: For each unique palindromic substring, computes suffix link.
+ * 	compute() calculates the frequencies of each palindrome in O(|s|)
+ * Status: tested on https://codeforces.com/gym/104857/problem/C
+ */
 struct eertree {
 	vi s, rem;
 	struct node {
-		int len = 0, link = 0, from = 0, cnt = 0;
+		int len = 0, link = 0, from = 0, cnt = 0, freq = 0;
 		int visit = -1;
 		array<int, 26> to{};
 	};
@@ -43,6 +48,7 @@ struct eertree {
 			overall++;
 		}
 		last = T[last].to[c];
+		T[last].freq++;
 		update(last, n - T[last].len);
 	}
 	void pop() {
@@ -57,5 +63,10 @@ struct eertree {
 		T[nd.from].cnt--, T[nd.link].cnt--;
 		update(nd.from, head);
 		update(nd.link, head - 1 + nd.len - T[nd.link].len);
+	}
+	void compute() {
+		for (int i = sz(T) - 1; i >= 0; i--) {
+			T[T[i].link].freq += T[i].freq;
+		}
 	}
 };
