@@ -53,6 +53,6 @@ struct Maxclique {
       else if (sz(q) > sz(qmax)) qmax = q;
       q.pop_back(), R.pop_back(); } }
   vi maxClique() { init(V), expand(V); return qmax; }
-  Maxclique(vb conn): e(conn), C(sz(e) + 1), S(sz(C)),
-                      old(S) {
+  Maxclique(vb conn):
+    e(conn), C(sz(e) + 1), S(sz(C)), old(S) {
     rep (i, 0, sz(e)) V.push_back({i}); } };

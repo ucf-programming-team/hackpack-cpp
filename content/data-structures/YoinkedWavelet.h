@@ -4,8 +4,8 @@ template<typename T> struct WaveletTree {
     iota(_idxs.begin(), _idxs.end(), 0);
     return _idxs; }
   WaveletTree(const vector<T>& v, const vector<size_t>& idxs,
-              T lo, T hi): lo(lo), hi(hi), idxs(idxs),
-                           left_sum(1, 0) {
+              T lo, T hi):
+    lo(lo), hi(hi), idxs(idxs), left_sum(1, 0) {
     if (is_leaf()) return;
     T mid = (lo + hi) / 2;
     vector<size_t> lo_idxs, hi_idxs;
@@ -21,12 +21,10 @@ template<typename T> struct WaveletTree {
                                            mid);
     children[1] = make_unique<WaveletTree>(v, hi_idxs, mid,
                                            hi); }
-  WaveletTree(const vector<T>& v): WaveletTree(v,
-                                               build_idxs(v.size()),
-                                               *min_element(v.begin(),
-                                                            v.end()),
-                                               *max_element(v.begin(),
-                                                            v.end()) + 1) {}
+  WaveletTree(const vector<T>& v):
+    WaveletTree(v, build_idxs(v.size()),
+                *min_element(v.begin(), v.end()),
+                *max_element(v.begin(), v.end()) + 1) {}
   bool
   is_leaf() const { return lo + 1 == hi || idxs.empty(); }
   // Find the index of the k-th smallest value in the range [l, r)

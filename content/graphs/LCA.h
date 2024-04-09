@@ -9,9 +9,8 @@ struct LCA {
   int T = 0;
   vector<int> pre, inv, tour;
   RMQ<int> rmq;
-  LCA(vector<vi>& adj,
-      int root = 0): pre(sz(adj)), inv(pre),
-                     rmq((dfs(adj, root), tour)) {}
+  LCA(vector<vi>& adj, int root = 0):
+    pre(sz(adj)), inv(pre), rmq((dfs(adj, root), tour)) {}
   void dfs(vector<vi>& adj, int u, int p = -1) {
     inv[pre[u] = T++] = u;
     for (int v : adj[u]) if (v != p)

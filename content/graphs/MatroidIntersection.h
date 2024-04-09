@@ -34,8 +34,8 @@ template<class M1, class M2> struct MatroidIsect {
   vector<char> iset;
   M1 m1;
   M2 m2;
-  MatroidIsect(M1 m1, M2 m2,
-               int n): n(n), iset(n + 1), m1(m1), m2(m2) {}
+  MatroidIsect(M1 m1, M2 m2, int n):
+    n(n), iset(n + 1), m1(m1), m2(m2) {}
   vi solve() {
     rep (i, 0, n) if (m1.check(i) && m2.check(i))
       iset[i] = true, m1.add(i), m2.add(i);

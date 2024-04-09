@@ -3,9 +3,8 @@ struct MinCostFlow4 {
     int u, v;
     ll cap, cost;
     Edge* rev;
-    Edge(int s, int e, ll cap,
-         ll c): u(s), v(e), cap(cap), cost(c), rev(nullptr) {}
-  };
+    Edge(int s, int e, ll cap, ll c):
+      u(s), v(e), cap(cap), cost(c), rev(nullptr) {} };
   struct Node {
     int id;
     ll d;

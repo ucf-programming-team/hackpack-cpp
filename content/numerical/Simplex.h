@@ -25,9 +25,8 @@ struct LPSolver {
   int m, n;
   vi N, B;
   vvd D;
-  LPSolver(const vvd& A, const vd& b,
-           const vd& c): m(sz(b)), n(sz(c)), N(n + 1), B(m),
-                         D(m + 2, vd(n + 2)) {
+  LPSolver(const vvd& A, const vd& b, const vd& c):
+    m(sz(b)), n(sz(c)), N(n + 1), B(m), D(m + 2, vd(n + 2)) {
     rep (i, 0, m) rep (j, 0, n) D[i][j] = A[i][j];
     rep (i, 0, m) {
       B[i] = n + i;
